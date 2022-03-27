@@ -7,5 +7,125 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body></body>
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="./images/header/header__logo.svg"
+          alt="логотип сайта"
+        />
+      </header>
+      <main class="content">
+        <!-- секция profile -->
+
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="./images/profile/profile__avatar.jpg"
+            alt="аватар пользователя"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <p class="profile__about">Исследователь океана</p>
+            <button class="profile__edit-button"></button>
+          </div>
+          <button class="profile__add-button"></button>
+        </section>
+
+        <!-- секция elements -->
+        <section class="elements">
+          <ul class="elements__container"></ul>
+          <li class="element">
+            <img
+              class="element__photo"
+              src="./images/element/Baikal Lake.jpg"
+              alt="озеро Байкал"
+            />
+            <div class="element__bttm-panel">
+              <h2 сlass="element__title">Байкал</h2>
+              //TODO: checkbox???
+              <img
+                class="element__image"
+                src="./images/element/element__like.svg"
+              />
+            </div>
+          </li>
+          <li class="element">
+            <img
+              class="element__photo"
+              src="./images/element/Karelia.jpg"
+              alt="Карелия"
+            />
+            <div class="element__bttm-panel">
+              <h2 сlass="element__title">Карелия</h2>
+              <img
+                class="element__image"
+                src="./images/element/element__like.svg"
+              />
+            </div>
+          </li>
+          <li class="element">
+            <img
+              class="element__photo"
+              src="./images/element/Krasnoyarsk.jpg"
+              alt="Красноярск"
+            />
+            <div class="element__bttm-panel">
+              <h2 сlass="element__title">Красноярск</h2>
+              <img
+                class="element__image"
+                src="./images/element/element__like.svg"
+              />
+            </div>
+          </li>
+          <li class="element">
+            <img
+              class="element__photo"
+              src="./images/element/Novosil.jpg"
+              alt="подсолнухи в Новосиле"
+            />
+            <div class="element__bttm-panel">
+              <h2 сlass="element__title">Новосиль</h2>
+              <img
+                class="element__image"
+                src="./images/element/element__like.svg"
+              />
+            </div>
+          </li>
+          <li class="element">
+            <img
+              class="element__photo"
+              src="./images/element/Tulinovka.jpg"
+              alt="Тулиновка"
+            />
+            <div class="element__bttm-panel">
+              <h2 сlass="element__title">Тулиновка</h2>
+              <img
+                class="element__image"
+                src="./images/element/element__like.svg"
+              />
+            </div>
+          </li>
+          <li class="element">
+            <img
+              class="element__photo"
+              src="./images/element/Vladivostok.jpg"
+              alt="Владивосток"
+            />
+            <div class="element__bttm-panel">
+              <h2 сlass="element__title">Владивосток</h2>
+              <img
+                class="element__image"
+                src="./images/element/element__like.svg"
+              />
+            </div>
+          </li>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+      </footer>
+    </div>
+  </body>
 </html>
