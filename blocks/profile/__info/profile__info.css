@@ -1,0 +1,12 @@
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "name edit-button"
+    "about .";
+  column-gap: 18px;
+  row-gap: 16px;
+  grid-template-rows: repeat(2, max-content);
+  grid-template-columns: fit-content(500px) minmax(min-content, max-content);
+  align-items: end;
+  margin: auto 0;
+}
