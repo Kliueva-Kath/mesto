@@ -1,0 +1,18 @@
+.edit-form__save-button {
+  background-color: black;
+  border-radius: 2px;
+  border: none;
+  width: 358px;
+  height: 50px;
+  box-sizing: border-box;
+  font-family: "Inter", "Arial", sans-serif;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+}
+
+.edit-form__save-button:hover {
+  opacity: 0.8;
+}

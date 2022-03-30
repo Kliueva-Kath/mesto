@@ -1,12 +1,7 @@
 .profile__edit-button {
   grid-area: edit-button;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
   background-color: transparent;
   background-image: url("../../../images/profile/edit-button.svg");
-  display: block;
   border: 0;
   width: 24px;
   height: 24px;

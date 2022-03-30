@@ -1,0 +1,5 @@
+.element__bttm-panel {
+  padding: 25px 30px 31px 21px;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,6 @@
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 54px;
+  padding-bottom: 37px;
+}

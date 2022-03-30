@@ -28,82 +28,113 @@
             />
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <p class="profile__about">Исследователь океана</p>
+              <p class="profile__job">Исследователь океана</p>
               <button class="profile__edit-button"></button>
             </div>
           </div>
           <button class="profile__add-button"></button>
+          <!-- Попап редактирования -->
+          <div class="popup">
+            <div class="popup__container">
+              <h2 class="edit-form__header">Редактировать профиль</h2>
+              <form class="edit-form">
+                <input type="text" class="edit-form__name" placeholder="Имя" />
+                <input
+                  type="text"
+                  class="edit-form__job"
+                  placeholder="О себе"
+                />
+                <button class="edit-form__save-button" type="submit">
+                  Сохранить
+                </button>
+              </form>
+              <button class="popup__close-icon"></button>
+            </div>
+          </div>
         </section>
 
         <!-- секция elements -->
         <section class="elements">
-          <ul class="elements__container"></ul>
-          <li class="element">
-            <img
-              class="element__photo"
-              src="./images/element/Baikal Lake.jpg"
-              alt="озеро Байкал"
-            />
-            <div class="element__bttm-panel">
-              <h2 сlass="element__title">Байкал</h2>
-              <button class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              class="element__photo"
-              src="./images/element/Karelia.jpg"
-              alt="Карелия"
-            />
-            <div class="element__bttm-panel">
-              <h2 сlass="element__title">Карелия</h2>
-              <button class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              class="element__photo"
-              src="./images/element/Krasnoyarsk.jpg"
-              alt="Красноярск"
-            />
-            <div class="element__bttm-panel">
-              <h2 сlass="element__title">Красноярск</h2>
-              <button class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              class="element__photo"
-              src="./images/element/Novosil.jpg"
-              alt="подсолнухи в Новосиле"
-            />
-            <div class="element__bttm-panel">
-              <h2 сlass="element__title">Новосиль</h2>
-              <button class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              class="element__photo"
-              src="./images/element/Tulinovka.jpg"
-              alt="Тулиновка"
-            />
-            <div class="element__bttm-panel">
-              <h2 сlass="element__title">Тулиновка</h2>
-              <button class="element__like"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              class="element__photo"
-              src="./images/element/Vladivostok.jpg"
-              alt="Владивосток"
-            />
-            <div class="element__bttm-panel">
-              <h2 сlass="element__title">Владивосток</h2>
-              <button class="element__like"></button>
-            </div>
-          </li>
+          <ul class="elements__container">
+            <li class="element">
+              <div class="element__photo-wrapper">
+                <img
+                  class="element__photo"
+                  src="./images/element/Baikal Lake.jpg"
+                  alt="озеро Байкал"
+                />
+              </div>
+              <div class="element__bttm-panel">
+                <h2 class="element__title">Байкал</h2>
+                <button class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__photo-wrapper">
+                <img
+                  class="element__photo"
+                  src="./images/element/Karelia.jpg"
+                  alt="Карелия"
+                />
+              </div>
+              <div class="element__bttm-panel">
+                <h2 class="element__title">Карелия</h2>
+                <button class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__photo-wrapper">
+                <img
+                  class="element__photo"
+                  src="./images/element/Krasnoyarsk.jpg"
+                  alt="Красноярск"
+                />
+              </div>
+              <div class="element__bttm-panel">
+                <h2 class="element__title">Красноярск</h2>
+                <button class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__photo-wrapper">
+                <img
+                  class="element__photo"
+                  src="./images/element/Novosil.jpg"
+                  alt="подсолнухи в Новосиле"
+                />
+              </div>
+              <div class="element__bttm-panel">
+                <h2 class="element__title">Новосиль</h2>
+                <button class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__photo-wrapper">
+                <img
+                  class="element__photo"
+                  src="./images/element/Tulinovka.jpg"
+                  alt="Тулиновка"
+                />
+              </div>
+              <div class="element__bttm-panel">
+                <h2 class="element__title">Тулиновка</h2>
+                <button class="element__like"></button>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__photo-wrapper">
+                <img
+                  class="element__photo"
+                  src="./images/element/Vladivostok.jpg"
+                  alt="Владивосток"
+                />
+              </div>
+              <div class="element__bttm-panel">
+                <h2 class="element__title">Владивосток</h2>
+                <button class="element__like"></button>
+              </div>
+            </li>
+          </ul>
         </section>
       </main>
       <footer class="footer">
