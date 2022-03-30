@@ -8,3 +8,16 @@
   margin: 0;
   grid-area: about;
 }
+
+@media screen and (max-width: 650px) {
+  .profile__job {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__job {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

@@ -10,3 +10,10 @@
   align-items: end;
   margin: auto 0;
 }
+
+@media screen and (max-width: 500px) {
+  .profile__info {
+    column-gap: 10px;
+    row-gap: 14px;
+  }
+}

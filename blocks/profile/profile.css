@@ -11,6 +11,12 @@
   .profile {
     flex-direction: column;
     align-items: center;
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile {
     gap: 36px;
   }
 }

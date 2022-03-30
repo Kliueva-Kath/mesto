@@ -11,3 +11,10 @@
   text-overflow: ellipsis;
   grid-area: name;
 }
+
+@media screen and (max-width: 500px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 1.22;
+  }
+}
