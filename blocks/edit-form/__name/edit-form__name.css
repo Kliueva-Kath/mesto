@@ -1,0 +1,27 @@
+.edit-form__name {
+  font-family: "Inter", "Arial", sans-serif;
+  display: block;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-bottom: 17px;
+  max-width: 358px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  min-height: 40px;
+  vertical-align: middle;
+}
+
+.edit-form__name:focus {
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.edit-form__name::placeholder {
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}

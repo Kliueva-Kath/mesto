@@ -28,11 +28,29 @@
             />
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <p class="profile__about">Исследователь океана</p>
+              <p class="profile__job">Исследователь океана</p>
               <button class="profile__edit-button"></button>
             </div>
           </div>
           <button class="profile__add-button"></button>
+          <!-- Попап редактирования -->
+          <div class="popup">
+            <div class="popup__container">
+              <h2 class="edit-form__header">Редактировать профиль</h2>
+              <form class="edit-form">
+                <input type="text" class="edit-form__name" placeholder="Имя" />
+                <input
+                  type="text"
+                  class="edit-form__job"
+                  placeholder="О себе"
+                />
+                <button class="edit-form__save-button" type="submit">
+                  Сохранить
+                </button>
+              </form>
+              <button class="popup__close-icon"></button>
+            </div>
+          </div>
         </section>
 
         <!-- секция elements -->
