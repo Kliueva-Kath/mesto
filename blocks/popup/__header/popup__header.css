@@ -1,4 +1,4 @@
-.edit-form__header {
+.popup__header {
   font-family: "Inter", "Arial", sans-serif;
   font-weight: 900;
   font-size: 24px;
@@ -8,14 +8,14 @@
 }
 
 @media screen and (max-width: 900px) {
-  .edit-form__header {
+  .popup__header {
     font-size: 22px;
     line-height: 1.21;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .edit-form__header {
+  .popup__header {
     font-size: 18px;
     line-height: 1.22;
   }
