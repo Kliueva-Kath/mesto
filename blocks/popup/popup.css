@@ -6,7 +6,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  display: flex;
+  display: none;
   padding-left: 19px;
   padding-right: 19px;
 }
