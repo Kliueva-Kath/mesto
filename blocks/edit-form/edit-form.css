@@ -1,6 +1,17 @@
 .edit-form {
   display: flex;
   flex-direction: column;
-  padding-top: 54px;
-  padding-bottom: 37px;
+  padding-top: 47px;
+}
+
+@media screen and (max-width: 900px) {
+  .edit-form {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .edit-form {
+    padding-top: 72px;
+  }
 }

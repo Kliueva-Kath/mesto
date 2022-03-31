@@ -2,7 +2,7 @@
   background-color: black;
   border-radius: 2px;
   border: none;
-  width: 358px;
+  max-width: 358px;
   height: 50px;
   box-sizing: border-box;
   font-family: "Inter", "Arial", sans-serif;
@@ -15,4 +15,20 @@
 
 .edit-form__save-button:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 900px) {
+  .edit-form__save-button {
+    font-size: 16px;
+    line-height: 1.22;
+    height: 48px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .edit-form__save-button {
+    font-size: 14px;
+    line-height: 1.21;
+    height: 46px;
+  }
 }
