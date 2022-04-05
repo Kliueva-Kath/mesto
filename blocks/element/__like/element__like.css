@@ -1,4 +1,9 @@
 .element__like {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
   background-color: transparent;
   background-image: url("../../../images/element/like_disabled.svg");
   border: 0;

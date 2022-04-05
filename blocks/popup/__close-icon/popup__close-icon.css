@@ -1,4 +1,9 @@
 .popup__close-icon {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
   background-image: url(../../../images/popup/close-icon.svg);
   background-color: transparent;
   border: 0;
