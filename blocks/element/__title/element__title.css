@@ -7,4 +7,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  /* ограничила максимальную ширину теста, исключив лайк с небольшим буфером*/
+  max-width: calc(100% - 28px);
 }
