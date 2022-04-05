@@ -17,3 +17,10 @@
     row-gap: 14px;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .profile__info {
+    width: 282px;
+    justify-content: center;
+  }
+}
