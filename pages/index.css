@@ -56,11 +56,11 @@
 @import url("../blocks/popup/__close-icon/popup__close-icon.css");
 @import url("../blocks/popup/__header/popup__header.css");
 /* форма попапа */
-@import url("../blocks/form/__save-button/form__save-button.css");
+@import url("../blocks/input/__save-button/input__save-button.css");
 /* поля ввода попапа */
 @import url("../blocks/input/__text/input__text.css");
 
-/* общие стили для form, input и button */
-@import url("../blocks/form/form.css");
+/* общие стили для input и button */
+
 @import url("../blocks/input/input.css");
 @import url("../blocks/button/button.css");
