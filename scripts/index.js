@@ -1,6 +1,15 @@
 // сам попап
 let popup = document.querySelector(".popup");
 
+// Форма и поля ввода
+let profileEditForm = document.forms.profileEditForm;
+let nameInput = profileEditForm.querySelector(".input__text_type_name");
+let jobInput = profileEditForm.querySelector(".input__text_type_job");
+
+// элемены имени и информации о себе в профиле
+let profileName = document.querySelector(".profile__name");
+let profileJob = document.querySelector(".profile__job");
+
 // кнопка открытия попапа (кнопка редактирования)
 let openPopupButton = document.querySelector(".profile__edit-button");
 
@@ -11,6 +20,9 @@ let closePopupButton = document.querySelector(".popup__close-icon");
 
 function openPopup() {
   popup.classList.add("popup_opened");
+  // значения в полях ввода по умолчанию - текущие данные профиля
+  nameInput.defaultValue = profileName.textContent;
+  jobInput.defaultValue = profileJob.textContent;
 }
 openPopupButton.addEventListener("click", openPopup);
 
@@ -20,18 +32,6 @@ function closePopup() {
   popup.classList.remove("popup_opened");
 }
 closePopupButton.addEventListener("click", closePopup);
-
-// элемены имени и информации о себе в профиле
-let profileName = document.querySelector(".profile__name");
-let profileJob = document.querySelector(".profile__job");
-
-// Находим форму в DOM
-let profileEditForm = document.forms.profileEditForm;
-// Находим поля формы в DOM
-let nameInput = profileEditForm.querySelector(".input__text_type_name");
-nameInput.defaultValue = profileName.textContent;
-let jobInput = profileEditForm.querySelector(".input__text_type_job");
-jobInput.defaultValue = profileJob.textContent;
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
