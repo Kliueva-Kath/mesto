@@ -3,4 +3,20 @@
   display: block;
   box-sizing: border-box;
   outline: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 47px;
+  gap: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .input {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .input {
+    padding-top: 72px;
+  }
 }
