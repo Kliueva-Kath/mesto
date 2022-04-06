@@ -1,33 +1,26 @@
-.edit-form__job {
+.input__text {
   font-family: "Inter", "Arial", sans-serif;
   display: block;
   box-sizing: border-box;
+  outline: none;
+  border: none;
+  color: #000000;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #000000;
-  margin-bottom: 47px;
-  max-width: 358px;
-  outline: none;
-  border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 9px;
+  max-width: 358px;
 }
 
-.edit-form__job:focus {
+.input__text:focus {
   outline: none;
   border-bottom: 1px solid black;
 }
 
-.edit-form__job::placeholder {
+.input__text::placeholder {
   font-family: "Inter", "Arial", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-}
-
-@media screen and (max-width: 500px) {
-  .edit-form__job {
-    margin-bottom: 45px;
-  }
 }

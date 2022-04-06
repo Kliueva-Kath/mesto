@@ -26,11 +26,11 @@ let profileName = document.querySelector(".profile__name");
 let profileJob = document.querySelector(".profile__job");
 
 // Находим форму в DOM
-let formElement = document.querySelector(".edit-form");
+let profileEditForm = document.forms.profileEditForm;
 // Находим поля формы в DOM
-let nameInput = formElement.querySelector(".edit-form__name");
+let nameInput = profileEditForm.querySelector(".input__text_type_name");
 nameInput.defaultValue = profileName.textContent;
-let jobInput = formElement.querySelector(".edit-form__job");
+let jobInput = profileEditForm.querySelector(".input__text_type_job");
 jobInput.defaultValue = profileJob.textContent;
 
 // Обработчик «отправки» формы, хотя пока
@@ -46,4 +46,4 @@ function formSubmitHandler(evt) {
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener("submit", formSubmitHandler);
+profileEditForm.addEventListener("submit", formSubmitHandler);

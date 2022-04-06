@@ -30,14 +30,14 @@
               <h1 class="profile__name">Жак-Ив Кусто</h1>
               <p class="profile__job">Исследователь океана</p>
               <button
-                class="profile__edit-button"
+                class="button profile__edit-button"
                 type="button"
                 aria-label="редактировать профиль"
               ></button>
             </div>
           </div>
           <button
-            class="profile__add-button"
+            class="button profile__add-button"
             type="button"
             area-label="добавить пост"
           ></button>
@@ -57,7 +57,7 @@
               <div class="element__bttm-panel">
                 <h2 class="element__title">Байкал</h2>
                 <button
-                  class="element__like"
+                  class="button element__like"
                   type="button"
                   aria-label="поставить лайк"
                 ></button>
@@ -74,7 +74,7 @@
               <div class="element__bttm-panel">
                 <h2 class="element__title">Карелия</h2>
                 <button
-                  class="element__like"
+                  class="button element__like"
                   type="button"
                   aria-label="поставить лайк"
                 ></button>
@@ -91,7 +91,7 @@
               <div class="element__bttm-panel">
                 <h2 class="element__title">Красноярск</h2>
                 <button
-                  class="element__like"
+                  class="button element__like"
                   type="button"
                   aria-label="поставить лайк"
                 ></button>
@@ -108,7 +108,7 @@
               <div class="element__bttm-panel">
                 <h2 class="element__title">Новосиль</h2>
                 <button
-                  class="element__like"
+                  class="button element__like"
                   type="button"
                   aria-label="поставить лайк"
                 ></button>
@@ -125,7 +125,7 @@
               <div class="element__bttm-panel">
                 <h2 class="element__title">Тулиновка</h2>
                 <button
-                  class="element__like"
+                  class="button element__like"
                   type="button"
                   aria-label="поставить лайк"
                 ></button>
@@ -142,7 +142,7 @@
               <div class="element__bttm-panel">
                 <h2 class="element__title">Владивосток</h2>
                 <button
-                  class="element__like"
+                  class="button element__like"
                   type="button"
                   aria-label="поставить лайк"
                 ></button>
@@ -158,11 +158,21 @@
       <div class="popup">
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
-          <form class="edit-form">
-            <input type="text" class="edit-form__name" placeholder="Имя" />
-            <input type="text" class="edit-form__job" placeholder="О себе" />
+          <form class="form form_type_edit" name="profileEditForm">
+            <input
+              type="text"
+              class="input__text input__text_type_name"
+              name="nameInput"
+              placeholder="Имя"
+            />
+            <input
+              type="text"
+              class="input__text input__text_type_job"
+              name="jobInput"
+              placeholder="О себе"
+            />
             <button
-              class="edit-form__save-button"
+              class="button form__save-button"
               type="submit"
               aria-label="сохранить изменения"
             >
@@ -170,7 +180,7 @@
             </button>
           </form>
           <button
-            class="popup__close-icon"
+            class="button popup__close-icon"
             type="button"
             aria-label="закрыть форму редактирования"
           ></button>

@@ -1,17 +1,18 @@
-.edit-form {
+.form {
   display: flex;
   flex-direction: column;
   padding-top: 47px;
+  gap: 30px;
 }
 
 @media screen and (max-width: 900px) {
-  .edit-form {
+  .form {
     padding-top: 60px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .edit-form {
+  .form {
     padding-top: 72px;
   }
 }
