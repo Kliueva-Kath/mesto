@@ -22,5 +22,6 @@
   .profile__info {
     width: 282px;
     justify-content: center;
+    row-gap: 5px;
   }
 }
