@@ -1,20 +1,20 @@
 // сам попап
-let popup = document.querySelector(".popup");
+const popup = document.querySelector(".popup");
 
 // Форма и поля ввода
-let profileEditForm = document.forms.profileEditForm;
-let nameInput = profileEditForm.querySelector(".input__text_type_name");
-let jobInput = profileEditForm.querySelector(".input__text_type_job");
+const profileEditForm = document.forms.profileEditForm;
+const nameInput = profileEditForm.querySelector(".input__text_type_name");
+const jobInput = profileEditForm.querySelector(".input__text_type_job");
 
 // элемены имени и информации о себе в профиле
-let profileName = document.querySelector(".profile__name");
-let profileJob = document.querySelector(".profile__job");
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__job");
 
 // кнопка открытия попапа (кнопка редактирования)
-let openPopupButton = document.querySelector(".profile__edit-button");
+const openPopupButton = document.querySelector(".profile__edit-button");
 
 // кнопка закрытия попапа
-let closePopupButton = document.querySelector(".popup__close-icon");
+const closePopupButton = document.querySelector(".popup__close-icon");
 
 // открытие попапа
 
@@ -47,3 +47,30 @@ function formSubmitHandler(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 profileEditForm.addEventListener("submit", formSubmitHandler);
+
+const initialCards = [
+  {
+    name: "Байкал",
+    link: "https://images.unsplash.com/photo-1551845041-63e8e76836ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1889&q=80",
+  },
+  {
+    name: "Карелия",
+    link: "https://images.unsplash.com/photo-1573156667788-3b0a869a97b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+  },
+  {
+    name: "Красноярск",
+    link: "https://images.unsplash.com/photo-1597125760773-b0166e249ea7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80",
+  },
+  {
+    name: "Новосиль",
+    link: "https://images.unsplash.com/photo-1444894423756-1bb106dce5a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=771&q=80",
+  },
+  {
+    name: "Тулиновка",
+    link: "https://images.unsplash.com/photo-1516128935666-9742cf27e24c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+  },
+  {
+    name: "Владивосток",
+    link: "https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=433&q=80",
+  },
+];
