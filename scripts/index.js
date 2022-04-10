@@ -1,7 +1,9 @@
-// сам попап
-const popup = document.querySelector(".popup");
+// НАСТРОЙКА ПОПАПА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 
-// Форма и поля ввода
+// сам попап редактирования
+const editPopup = document.querySelector(".popup_type_edit");
+
+// Форма и поля ввода - редактирование профиля
 const profileEditForm = document.forms.profileEditForm;
 const nameInput = profileEditForm.querySelector(".input__text_type_name");
 const jobInput = profileEditForm.querySelector(".input__text_type_job");
@@ -10,16 +12,16 @@ const jobInput = profileEditForm.querySelector(".input__text_type_job");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
-// кнопка открытия попапа (кнопка редактирования)
+// кнопка открытия попапа редактирования (кнопка редактирования)
 const openPopupButton = document.querySelector(".profile__edit-button");
 
-// кнопка закрытия попапа
+// кнопка закрытия попапа редактирования
 const closePopupButton = document.querySelector(".popup__close-icon");
 
 // открытие попапа
 
 function openPopup() {
-  popup.classList.add("popup_opened");
+  editPopup.classList.add("popup_opened");
   // значения в полях ввода по умолчанию - текущие данные профиля
   nameInput.defaultValue = profileName.textContent;
   jobInput.defaultValue = profileJob.textContent;

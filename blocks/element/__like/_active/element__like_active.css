@@ -1,3 +1,4 @@
 .element__like_active {
   background-image: url("../../../../images/element/like_active.svg");
+  position: absolute;
 }
