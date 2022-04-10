@@ -113,8 +113,9 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
+
       <!-- Попап редактирования -->
-      <div class="popup">
+      <div class="popup popup_type_edit">
         <div class="popup__container">
           <h2 class="popup__header">Редактировать профиль</h2>
           <form class="input" name="profileEditForm">
@@ -131,6 +132,31 @@
               placeholder="О себе"
             />
             <button class="button input__save-button" type="submit">
+              Сохранить
+            </button>
+          </form>
+          <button class="button popup__close-icon" type="button"></button>
+        </div>
+      </div>
+
+      <!-- Попап добавления карточки -->
+      <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <h2 class="popup__header">Новое место</h2>
+          <form class="input" name="profileEditForm">
+            <input
+              type="text"
+              class="input__text input__text_type_place"
+              name="nameInput"
+              placeholder="Название"
+            />
+            <input
+              type="text"
+              class="input__text input__text_type_link"
+              name="jobInput"
+              placeholder="Ссылка на картинку"
+            />
+            <button class="button input__create-button" type="submit">
               Сохранить
             </button>
           </form>
