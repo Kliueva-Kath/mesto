@@ -1,5 +1,6 @@
-// ДОБАВЛЕНИЕ КАРТОЧЕК НА СТРАНИЦУ
+// DOM-ЭЛЕМЕНТЫ
 
+// КАРТОЧКИ
 const initialCards = [
   {
     name: "Байкал",
@@ -27,12 +28,35 @@ const initialCards = [
   },
 ];
 
-// контейнер карточек
 const cardsContainer = document.querySelector(".elements__container");
-//заготовка template
 const cardsTemplate = document.querySelector(".cards-template");
 
-// вставка массива в контейнер
+// ПОПАП РЕДАКТИРОВАНИЯ
+const editPopup = document.querySelector(".popup_type_edit");
+
+const profileEditForm = document.forms.profileEditForm;
+const nameInput = profileEditForm.querySelector(".input__text_type_name");
+const jobInput = profileEditForm.querySelector(".input__text_type_job");
+
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__job");
+
+// ПОПАП  ДОБАВЛЕНИЯ КАРТОЧЕК
+const addPopup = document.querySelector(".popup_type_add-card");
+
+// ПОПАП ПРОСМОТРА КАРТИНКИ
+const imagePopup = document.querySelector(".popup_type_image");
+const openedImage = imagePopup.querySelector(".image");
+const openedImageTitle = imagePopup.querySelector(".image__title");
+
+// ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
+const closeEditPopupButton = editPopup.querySelector(".popup__close-icon");
+const closeAddCardPopupButton = addPopup.querySelector(".popup__close-icon");
+const closeImagePopupButton = imagePopup.querySelector(".popup__close-icon");
+const openAddCardPopupButton = document.querySelector(".profile__add-button");
+const openEditPopupButton = document.querySelector(".profile__edit-button");
+const openImagePopup = document.querySelector(".element__photo");
+
 function render() {
   const html = initialCards.map(getElement);
   cardsContainer.append(...html);
@@ -42,33 +66,41 @@ function getElement(item) {
   const getElementTemplate = cardsTemplate.content.cloneNode(true);
   const cardTitle = getElementTemplate.querySelector(".element__title");
   const cardLink = getElementTemplate.querySelector(".element__photo");
+  const deleteButton = getElementTemplate.querySelector(
+    ".element__delete-button"
+  );
   cardTitle.textContent = item.name;
   cardLink.src = item.link;
-
+  deleteButton.addEventListener("click", deleteCard);
   return getElementTemplate;
 }
+
+function deleteCard(evt) {
+  const card = evt.target.closest(".element");
+  card.remove();
+}
+
+// функция добавления карточки
+function addFormHandler(evt) {
+  evt.preventDefault();
+  const addCardForm = document.forms.addCardForm;
+  const placeInputValue = addCardForm.querySelector(
+    ".input__text_type_place"
+  ).value;
+  const linkInputValue = addCardForm.querySelector(
+    ".input__text_type_link"
+  ).value;
+  const card = getElement({ name: placeInputValue, link: linkInputValue });
+  cardsContainer.prepend(card);
+  addPopup.classList.remove("popup_opened");
+}
+
+// Прикрепляем обработчик к форме:
+addCardForm.addEventListener("submit", addFormHandler);
 
 render();
 
 // НАСТРОЙКА ПОПАПА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-
-// сам попап редактирования
-const editPopup = document.querySelector(".popup_type_edit");
-
-// Форма и поля ввода - редактирование профиля
-const profileEditForm = document.forms.profileEditForm;
-const nameInput = profileEditForm.querySelector(".input__text_type_name");
-const jobInput = profileEditForm.querySelector(".input__text_type_job");
-
-// элемены имени и информации о себе в профиле
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__job");
-
-// кнопка открытия попапа редактирования (кнопка редактирования)
-const openEditPopupButton = document.querySelector(".profile__edit-button");
-
-// кнопка закрытия попапа редактирования
-const closeEditPopupButton = document.querySelector(".popup__close-icon"); //TODO кнопки закрытия отдельно или через evt.target??
 
 // открытие попапа редактирования
 function openEditPopup() {
@@ -79,62 +111,47 @@ function openEditPopup() {
 }
 openEditPopupButton.addEventListener("click", openEditPopup);
 
-// закрытие попапа //TODO кнопки закрытия отдельно или через evt.target??
-
-function closeEditPopup() {
-  editPopup.classList.remove("popup_opened");
-}
-closeEditPopupButton.addEventListener("click", closeEditPopup);
-
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function formSubmitHandler(evt) {
+// Обработчик «отправки» формы
+function editFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Так мы можем определить свою логику отправки.
-  // О том, как это делать, расскажем позже.
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   editPopup.classList.remove("popup_opened");
 }
 
 // Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-profileEditForm.addEventListener("submit", formSubmitHandler);
+profileEditForm.addEventListener("submit", editFormHandler);
 
-// ОТКРЫТИЕ ПОПАПА ДОБАВЛЕНИЯ КАРТОЧЕК
-
-// сам попап добавления карточек
-const addPopup = document.querySelector(".popup_type_add-card");
-
-// Форма и поля ввода - редактирование профиля
-const addCardForm = document.forms.addCardForm;
-const placeInput = addCardForm.querySelector(".input__text_type_place");
-const linkInput = addCardForm.querySelector(".input__text_type_link");
-
-// элемены названия места и ссылки на картинку
-// const profilePlace = //TODO: добавить из массива;
-// const profileLink = //TODO: добавить из массива;
-
-// кнопка открытия попапа добавления карточек (кнопка добавления карточек)
-const openAddCardPopupButton = document.querySelector(".profile__add-button");
-
-// кнопка закрытия попапа редактирования
-const closeAddCardPopupButton = document.querySelector(".popup__close-icon"); //TODO кнопки закрытия отдельно или через evt.target??
-
-// открытие попапа редактирования
+// открытие попапа добавления карточек
 function openAddCardPopup() {
   addPopup.classList.add("popup_opened");
 }
 openAddCardPopupButton.addEventListener("click", openAddCardPopup);
 
-// закрытие попапа //TODO кнопки закрытия отдельно или через evt.target??
-
-function closeEditPopup() {
-  editPopup.classList.remove("popup_opened");
+function closePopup(evt) {
+  const closeButton = evt.target.closest(".popup");
+  closeButton.classList.remove("popup_opened");
 }
-closeEditPopupButton.addEventListener("click", closeEditPopup);
-// TODO сделать
-// Обработчик «отправки» формы, хотя пока она никуда отправляться не будет
-// TODO сделать
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
+
+closeEditPopupButton.addEventListener("click", closePopup);
+closeAddCardPopupButton.addEventListener("click", closePopup);
+closeImagePopupButton.addEventListener("click", closePopup);
+
+//  ПОПАП ПРОСМОТРА КАРТИНКИ
+
+const card = document.querySelectorAll(".element");
+
+function openPopup(card) {
+  const openedImage = imagePopup.querySelector(".image");
+  const openedImageTitle = imagePopup.querySelector(".image__title");
+  // const clickedImage = card.querySelector(".element__photo");
+  //  const clickedImageTitle = card.querySelector(".element__title");
+  imagePopup.classList.add("popup_opened");
+  openedImage.src = card.link;
+  openedImageTitle.textContent = card.name;
+}
+openImagePopup.addEventListener("click", openPopup);
+
+// открываем попап по клику на картинку (.element__photo) - через event target
+// в отображении попапа image__close-up = element__photo,
+// а image__title = element__title

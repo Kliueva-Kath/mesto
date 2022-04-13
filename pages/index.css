@@ -61,6 +61,12 @@
 /* поля ввода попапа */
 @import url("../blocks/input/__text/input__text.css");
 
+/* попап просмотра изображения */
+
+@import url("../blocks/image/image.css");
+@import url("../blocks/image/__title/image__title.css");
+@import url("../blocks/image/__close-up/image__close-up.css");
+
 /* общие стили для input и button */
 
 @import url("../blocks/input/input.css");
