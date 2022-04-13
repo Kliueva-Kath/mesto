@@ -13,27 +13,26 @@ const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
 // кнопка открытия попапа редактирования (кнопка редактирования)
-const openPopupButton = document.querySelector(".profile__edit-button");
+const openEditPopupButton = document.querySelector(".profile__edit-button");
 
 // кнопка закрытия попапа редактирования
-const closePopupButton = document.querySelector(".popup__close-icon");
+const closeEditPopupButton = document.querySelector(".popup__close-icon"); //TODO кнопки закрытия отдельно или через evt.target??
 
-// открытие попапа
-
-function openPopup() {
+// открытие попапа редактирования
+function openEditPopup() {
   editPopup.classList.add("popup_opened");
   // значения в полях ввода по умолчанию - текущие данные профиля
   nameInput.defaultValue = profileName.textContent;
   jobInput.defaultValue = profileJob.textContent;
 }
-openPopupButton.addEventListener("click", openPopup);
+openEditPopupButton.addEventListener("click", openEditPopup);
 
-// закрытие попапа
+// закрытие попапа //TODO кнопки закрытия отдельно или через evt.target??
 
-function closePopup() {
-  popup.classList.remove("popup_opened");
+function closeEditPopup() {
+  editPopup.classList.remove("popup_opened");
 }
-closePopupButton.addEventListener("click", closePopup);
+closeEditPopupButton.addEventListener("click", closeEditPopup);
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -43,12 +42,52 @@ function formSubmitHandler(evt) {
   // О том, как это делать, расскажем позже.
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  popup.classList.remove("popup_opened");
+  editPopup.classList.remove("popup_opened");
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 profileEditForm.addEventListener("submit", formSubmitHandler);
+
+// ОТКРЫТИЕ ПОПАПА ДОБАВЛЕНИЯ КАРТОЧЕК
+
+// сам попап добавления карточек
+const addPopup = document.querySelector(".popup_type_add-card");
+
+// Форма и поля ввода - редактирование профиля
+const addCardForm = document.forms.addCardForm;
+const placeInput = addCardForm.querySelector(".input__text_type_place");
+const linkInput = addCardForm.querySelector(".input__text_type_link");
+
+// элемены названия места и ссылки на картинку
+// const profilePlace = //TODO: добавить из массива;
+// const profileLink = //TODO: добавить из массива;
+
+// кнопка открытия попапа добавления карточек (кнопка добавления карточек)
+const openAddCardPopupButton = document.querySelector(".profile__add-button");
+
+// кнопка закрытия попапа редактирования
+const closeAddCardPopupButton = document.querySelector(".popup__close-icon"); //TODO кнопки закрытия отдельно или через evt.target??
+
+// открытие попапа редактирования
+function openAddCardPopup() {
+  addPopup.classList.add("popup_opened");
+}
+openAddCardPopupButton.addEventListener("click", openAddCardPopup);
+
+// закрытие попапа //TODO кнопки закрытия отдельно или через evt.target??
+
+function closeEditPopup() {
+  editPopup.classList.remove("popup_opened");
+}
+closeEditPopupButton.addEventListener("click", closeEditPopup);
+// TODO сделать
+// Обработчик «отправки» формы, хотя пока она никуда отправляться не будет
+// TODO сделать
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка»
+
+// ДОБАВЛЕНИЕ КАРТОЧЕК НА СТРАНИЦУ
 
 const initialCards = [
   {

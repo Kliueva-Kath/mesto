@@ -6,7 +6,9 @@
   left: 0;
   bottom: 0;
   right: 0;
-  display: none;
   padding-left: 19px;
   padding-right: 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s linear;
 }

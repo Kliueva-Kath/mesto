@@ -41,6 +41,20 @@
         <!-- секция elements -->
         <section class="elements">
           <ul class="elements__container">
+            <template id="element">
+              <li class="element">
+                <button
+                  class="button element__delete-button"
+                  type="button"
+                ></button>
+                <img class="element__photo" />
+                <div class="element__bttm-panel">
+                  <h2 class="element__title"></h2>
+                  <button class="button element__like" type="button"></button>
+                </div>
+              </li>
+            </template>
+
             <li class="element">
               <button
                 class="button element__delete-button"
@@ -167,7 +181,7 @@
       <div class="popup popup_type_add-card">
         <div class="popup__container">
           <h2 class="popup__header">Новое место</h2>
-          <form class="input" name="AddCardForm">
+          <form class="input" name="addCardForm">
             <input
               type="text"
               class="input__text input__text_type_place"
@@ -180,7 +194,7 @@
               name="jobInput"
               placeholder="Ссылка на картинку"
             />
-            <button class="button input__create-button" type="submit">
+            <button class="button input__save-button" type="submit">
               Сохранить
             </button>
           </form>
