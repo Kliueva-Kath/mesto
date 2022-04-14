@@ -78,6 +78,7 @@ function getElement(item) {
 
   cardTitle.textContent = item.name;
   cardLink.src = item.link;
+  cardLink.alt = item.name;
   deleteButton.addEventListener("click", deleteCard);
   likeButton.addEventListener("click", function (evt) {
     const eventTarget = evt.target;
@@ -90,6 +91,7 @@ function getElement(item) {
 function openImagePopup(element) {
   openedImage.src = element.link;
   openedImageTitle.textContent = element.name;
+  openedImage.alt = element.name;
   imagePopup.classList.add("popup_opened");
 }
 
