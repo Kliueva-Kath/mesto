@@ -40,6 +40,9 @@ const jobInput = profileEditForm.querySelector(".input__text_type_job");
 
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
+// значения по умолчанию для формы редактирования
+nameInput.defaultValue = profileName.textContent;
+jobInput.defaultValue = profileJob.textContent;
 
 // ПОПАП  ДОБАВЛЕНИЯ КАРТОЧЕК
 const addPopup = document.querySelector(".popup_type_add-card");
@@ -53,6 +56,7 @@ const openedImageTitle = imagePopup.querySelector(".image__title");
 const closeEditPopupButton = editPopup.querySelector(".popup__close-icon");
 const closeAddCardPopupButton = addPopup.querySelector(".popup__close-icon");
 const closeImagePopupButton = imagePopup.querySelector(".popup__close-icon");
+
 const openAddCardPopupButton = document.querySelector(".profile__add-button");
 const openEditPopupButton = document.querySelector(".profile__edit-button");
 const openImagePopup = document.querySelector(".element__photo");
@@ -69,9 +73,15 @@ function getElement(item) {
   const deleteButton = getElementTemplate.querySelector(
     ".element__delete-button"
   );
+  const likeButton = getElementTemplate.querySelector(".element__like");
+
   cardTitle.textContent = item.name;
   cardLink.src = item.link;
   deleteButton.addEventListener("click", deleteCard);
+  likeButton.addEventListener("click", function (evt) {
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle("element__like_active");
+  });
   return getElementTemplate;
 }
 
@@ -100,16 +110,13 @@ addCardForm.addEventListener("submit", addFormHandler);
 
 render();
 
-// НАСТРОЙКА ПОПАПА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-
-// открытие попапа редактирования
-function openEditPopup() {
-  editPopup.classList.add("popup_opened");
-  // значения в полях ввода по умолчанию - текущие данные профиля
-  nameInput.defaultValue = profileName.textContent;
-  jobInput.defaultValue = profileJob.textContent;
+// открытие попапов
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
 }
-openEditPopupButton.addEventListener("click", openEditPopup);
+openEditPopupButton.addEventListener("click", () => openPopup(editPopup));
+openAddCardPopupButton.addEventListener("click", () => openPopup(addPopup));
+// openImagePopup.addEventListener("click", () => openPopup(imagePopup));
 
 // Обработчик «отправки» формы
 function editFormHandler(evt) {
@@ -122,36 +129,17 @@ function editFormHandler(evt) {
 // Прикрепляем обработчик к форме:
 profileEditForm.addEventListener("submit", editFormHandler);
 
-// открытие попапа добавления карточек
-function openAddCardPopup() {
-  addPopup.classList.add("popup_opened");
-}
-openAddCardPopupButton.addEventListener("click", openAddCardPopup);
-
-function closePopup(evt) {
-  const closeButton = evt.target.closest(".popup");
-  closeButton.classList.remove("popup_opened");
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
-closeEditPopupButton.addEventListener("click", closePopup);
-closeAddCardPopupButton.addEventListener("click", closePopup);
-closeImagePopupButton.addEventListener("click", closePopup);
+closeEditPopupButton.addEventListener("click", () => closePopup(editPopup));
+closeAddCardPopupButton.addEventListener("click", () => closePopup(addPopup));
+closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
 
 //  ПОПАП ПРОСМОТРА КАРТИНКИ
-
-const card = document.querySelectorAll(".element");
-
-function openPopup(card) {
-  const openedImage = imagePopup.querySelector(".image");
-  const openedImageTitle = imagePopup.querySelector(".image__title");
-  // const clickedImage = card.querySelector(".element__photo");
-  //  const clickedImageTitle = card.querySelector(".element__title");
-  imagePopup.classList.add("popup_opened");
-  openedImage.src = card.link;
-  openedImageTitle.textContent = card.name;
-}
-openImagePopup.addEventListener("click", openPopup);
 
 // открываем попап по клику на картинку (.element__photo) - через event target
 // в отображении попапа image__close-up = element__photo,
 // а image__title = element__title
+function imagePopupHandler(element) {}
