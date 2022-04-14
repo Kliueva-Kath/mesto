@@ -4,4 +4,6 @@
   font-size: 12px;
   line-height: 1.25;
   color: #ffffff;
+  align-self: flex-start;
+  margin: 0;
 }

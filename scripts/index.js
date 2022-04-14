@@ -49,7 +49,7 @@ const addPopup = document.querySelector(".popup_type_add-card");
 
 // ПОПАП ПРОСМОТРА КАРТИНКИ
 const imagePopup = document.querySelector(".popup_type_image");
-const openedImage = imagePopup.querySelector(".image");
+const openedImage = imagePopup.querySelector(".image__close-up");
 const openedImageTitle = imagePopup.querySelector(".image__title");
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
@@ -59,7 +59,7 @@ const closeImagePopupButton = imagePopup.querySelector(".popup__close-icon");
 
 const openAddCardPopupButton = document.querySelector(".profile__add-button");
 const openEditPopupButton = document.querySelector(".profile__edit-button");
-const openImagePopup = document.querySelector(".element__photo");
+// const openImagePopup = document.querySelector(".element__photo");
 
 function render() {
   const html = initialCards.map(getElement);
@@ -82,7 +82,14 @@ function getElement(item) {
     const eventTarget = evt.target;
     eventTarget.classList.toggle("element__like_active");
   });
+  cardLink.addEventListener("click", () => openImagePopup(item));
   return getElementTemplate;
+}
+
+function openImagePopup(element) {
+  openedImage.src = element.link;
+  openedImageTitle.textContent = element.name;
+  imagePopup.classList.add("popup_opened");
 }
 
 function deleteCard(evt) {
@@ -142,4 +149,3 @@ closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
 // открываем попап по клику на картинку (.element__photo) - через event target
 // в отображении попапа image__close-up = element__photo,
 // а image__title = element__title
-function imagePopupHandler(element) {}
