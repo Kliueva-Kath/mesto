@@ -59,7 +59,8 @@ const closeImagePopupButton = imagePopup.querySelector(".popup__close-icon");
 
 const openAddCardPopupButton = document.querySelector(".profile__add-button");
 const openEditPopupButton = document.querySelector(".profile__edit-button");
-// const openImagePopup = document.querySelector(".element__photo");
+
+// ФУНКЦИИ
 
 function render() {
   const html = initialCards.map(getElement);
@@ -97,7 +98,6 @@ function deleteCard(evt) {
   card.remove();
 }
 
-// функция добавления карточки
 function addFormHandler(evt) {
   evt.preventDefault();
   const addCardForm = document.forms.addCardForm;
@@ -112,40 +112,32 @@ function addFormHandler(evt) {
   addPopup.classList.remove("popup_opened");
 }
 
-// Прикрепляем обработчик к форме:
-addCardForm.addEventListener("submit", addFormHandler);
-
-render();
-
-// открытие попапов
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
-openEditPopupButton.addEventListener("click", () => openPopup(editPopup));
-openAddCardPopupButton.addEventListener("click", () => openPopup(addPopup));
-// openImagePopup.addEventListener("click", () => openPopup(imagePopup));
 
-// Обработчик «отправки» формы
 function editFormHandler(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   editPopup.classList.remove("popup_opened");
 }
 
-// Прикрепляем обработчик к форме:
-profileEditForm.addEventListener("submit", editFormHandler);
-
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+render();
+
+// СЛУШАТЕЛИ СОБЫТИЙ
+
+addCardForm.addEventListener("submit", addFormHandler);
+
+openEditPopupButton.addEventListener("click", () => openPopup(editPopup));
+openAddCardPopupButton.addEventListener("click", () => openPopup(addPopup));
+
+profileEditForm.addEventListener("submit", editFormHandler);
+
 closeEditPopupButton.addEventListener("click", () => closePopup(editPopup));
 closeAddCardPopupButton.addEventListener("click", () => closePopup(addPopup));
 closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
-
-//  ПОПАП ПРОСМОТРА КАРТИНКИ
-
-// открываем попап по клику на картинку (.element__photo) - через event target
-// в отображении попапа image__close-up = element__photo,
-// а image__title = element__title
