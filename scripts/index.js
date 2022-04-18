@@ -40,12 +40,6 @@ const jobInput = profileEditForm.querySelector(".input__text_type_job");
 
 // ФОРМА ДОБАВЛЕНИЯ
 const addCardForm = document.forms.addCardForm;
-const placeInputValue = addCardForm.querySelector(
-    ".input__text_type_place"
-).value;
-const linkInputValue = addCardForm.querySelector(
-    ".input__text_type_link"
-).value;
 
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
@@ -108,6 +102,12 @@ function deleteCard(evt) {
 
 function addFormHandler(evt) {
     evt.preventDefault();
+    const placeInputValue = addCardForm.querySelector(
+        ".input__text_type_place"
+    ).value;
+    const linkInputValue = addCardForm.querySelector(
+        ".input__text_type_link"
+    ).value;
     const card = getElement({ name: placeInputValue, link: linkInputValue });
     cardsContainer.prepend(card);
     addPopup.classList.remove("popup_opened");
