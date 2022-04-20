@@ -110,7 +110,7 @@ function addFormHandler(evt) {
     ).value;
     const card = getElement({ name: placeInputValue, link: linkInputValue });
     cardsContainer.prepend(card);
-    addPopup.classList.remove("popup_opened");
+    closePopup(addPopup);
     addCardForm.reset();
 }
 
@@ -122,7 +122,7 @@ function editFormHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    editPopup.classList.remove("popup_opened");
+    closePopup(editPopup);
 }
 
 function closePopup(popup) {
@@ -137,8 +137,8 @@ addCardForm.addEventListener("submit", addFormHandler);
 
 openEditPopupButton.addEventListener("click", () => {
     openPopup(editPopup);
-    nameInput.defaultValue = profileName.textContent;
-    jobInput.defaultValue = profileJob.textContent;
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
 });
 
 openAddCardPopupButton.addEventListener("click", () => openPopup(addPopup));
