@@ -35,8 +35,8 @@ const editPopup = document.querySelector(".popup_type_edit");
 
 // ФОРМА РЕДАКТИРОВАНИЯ
 const profileEditForm = document.forms.profileEditForm;
-const nameInput = profileEditForm.querySelector(".input__text_type_name");
-const jobInput = profileEditForm.querySelector(".input__text_type_job");
+const nameInput = profileEditForm.elements.nameInput;
+const jobInput = profileEditForm.elements.jobInput;
 
 // ФОРМА ДОБАВЛЕНИЯ
 const addCardForm = document.forms.addCardForm;
@@ -102,12 +102,8 @@ function deleteCard(evt) {
 
 function addFormHandler(evt) {
     evt.preventDefault();
-    const placeInputValue = addCardForm.querySelector(
-        ".input__text_type_place"
-    ).value;
-    const linkInputValue = addCardForm.querySelector(
-        ".input__text_type_link"
-    ).value;
+    const placeInputValue = addCardForm.elements.placeInput.value;
+    const linkInputValue = addCardForm.elements.urlInput.value;
     const card = getElement({ name: placeInputValue, link: linkInputValue });
     cardsContainer.prepend(card);
     closePopup(addPopup);
