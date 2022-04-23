@@ -58,8 +58,8 @@
             <div class="popup__container">
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <form class="input" name="profileEditForm">
-                    <input type="text" class="input__text input__text_type_name" name="nameInput" placeholder="Имя" />
-                    <input type="text" class="input__text input__text_type_job" name="jobInput" placeholder="О себе" />
+                    <input type="text" class="input__text input__text_type_name" name="nameInput" placeholder="Имя" minlength="2" maxlength="40" required />
+                    <input type="text" class="input__text input__text_type_job" name="jobInput" placeholder="О себе" minlength="2" maxlength="200" required />
                     <button class="button input__save-button" type="submit">
               Сохранить
             </button>
@@ -73,8 +73,8 @@
             <div class="popup__container">
                 <h2 class="popup__header">Новое место</h2>
                 <form class="input" name="addCardForm">
-                    <input type="text" class="input__text input__text_type_place" name="nameInput" placeholder="Название" />
-                    <input required type="text" class="input__text input__text_type_link" name="jobInput" placeholder="Ссылка на картинку" />
+                    <input type="text" class="input__text input__text_type_place" name="nameInput" placeholder="Название" required />
+                    <input type="url" class="input__text input__text_type_link" name="jobInput" placeholder="Ссылка на картинку" required />
                     <button class="button input__save-button" type="submit">
               Сохранить
             </button>
@@ -92,6 +92,7 @@
         </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
