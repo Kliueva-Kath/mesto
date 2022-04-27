@@ -57,10 +57,10 @@
         <div class="popup popup_type_edit">
             <div class="popup__container">
                 <h2 class="popup__header">Редактировать профиль</h2>
-                <form class="form" name="profileEditForm">
-                    <input type="text" class="form__input" id="name-input" name="nameInput" placeholder="Имя" minlength="2" maxlength="40" required novalidate />
+                <form class="form" name="profileEditForm" novalidate>
+                    <input type="text" class="form__input" id="name-input" name="nameInput" placeholder="Имя" minlength="2" maxlength="40" required />
                     <span class="form__input-error name-input-error"></span>
-                    <input type="text" class="form__input" id="job-input" name="jobInput" placeholder="О себе" minlength="2" maxlength="200" required novalidate />
+                    <input type="text" class="form__input" id="job-input" name="jobInput" placeholder="О себе" minlength="2" maxlength="200" required />
                     <span class="form__input-error job-input-error"></span>
                     <button class="button form__save-button" type="submit">
               Сохранить
@@ -74,10 +74,10 @@
         <div class="popup popup_type_add-card">
             <div class="popup__container">
                 <h2 class="popup__header">Новое место</h2>
-                <form class="form" name="addCardForm">
-                    <input type="text" class="form__input" id="place-input" name="placeInput" placeholder="Название" minlength="2" maxlength="30" required novalidate />
+                <form class="form" name="addCardForm" novalidate>
+                    <input type="text" class="form__input" id="place-input" name="placeInput" placeholder="Название" minlength="2" maxlength="30" required />
                     <span class="form__input-error place-input-error"></span>
-                    <input type="url" class="form__input" name="urlInput" placeholder="Ссылка на картинку" required novalidate />
+                    <input type="url" class="form__input" name="urlInput" placeholder="Ссылка на картинку" required />
                     <span class="form__input-error url-input-error"></span>
                     <button class="button form__save-button" type="submit">
               Сохранить
