@@ -5,6 +5,10 @@
     font-size: 12px;
     line-height: 1.25;
     color: #ff0000;
-    max-width: 358px;
-    display: none;
+    width: 358px;
+    min-height: 12px;
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    text-align: start;
 }
