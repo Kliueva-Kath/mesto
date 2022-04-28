@@ -1,3 +1,12 @@
+const config = {
+    formSelector: ".form",
+    inputSelector: ".form__input",
+    buttonSelector: ".form__save-button",
+    inactiveButtonClass: "form__save-button_inactive",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__input-error_visible",
+};
+
 function enableValidation(config) {
     const forms = Array.from(document.querySelectorAll(config.formSelector));
     forms.forEach((form) => {
@@ -21,7 +30,7 @@ function setEventListeners(form, config) {
 
 function checkInputValidity(form, input, config) {
     if (!input.validity.valid) {
-        showInputError(form, input, input.ValidationMessage, config);
+        showInputError(form, input, input.validationMessage, config);
     } else {
         hideInputError(form, input, config);
     }
@@ -29,7 +38,6 @@ function checkInputValidity(form, input, config) {
 
 function showInputError(form, input, errorMessage, config) {
     const errorElement = form.querySelector(`.${input.id}-error`);
-    console.log(errorElement);
     input.classList.add(config.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(config.errorClass);
@@ -53,16 +61,4 @@ function toggleButtonState(form, config) {
     }
 }
 
-// функция очистки инпутов после закрытия формы
-function clearInputErrors() {
-    const inputs = Array.from(document.querySelectorAll(config, inputSelector));
-}
-
-enableValidation({
-    formSelector: ".form",
-    inputSelector: ".form__input",
-    buttonSelector: ".form__save-button",
-    inactiveButtonClass: "form__save-button_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_visible",
-});
+enableValidation(config);

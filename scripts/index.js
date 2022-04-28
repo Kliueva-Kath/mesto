@@ -62,6 +62,8 @@ const closeImagePopupButton = imagePopup.querySelector(".popup__close-icon");
 const openAddCardPopupButton = document.querySelector(".profile__add-button");
 const openEditPopupButton = document.querySelector(".profile__edit-button");
 
+const overlays = Array.from(document.querySelectorAll(".popup"));
+
 // ФУНКЦИИ
 
 function render() {
@@ -129,32 +131,6 @@ function closePopup(popup) {
     document.removeEventListener("keydown", closeByEsc);
 }
 
-render();
-
-// СЛУШАТЕЛИ СОБЫТИЙ
-
-addCardForm.addEventListener("submit", addFormHandler);
-
-openEditPopupButton.addEventListener("click", () => {
-    clearInputErrors();
-    openPopup(editPopup);
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-});
-
-openAddCardPopupButton.addEventListener("click", () => {
-    clearInputErrors();
-    openPopup(addPopup);
-    placeInput.value = "";
-    urlInput.value = "";
-});
-
-profileEditForm.addEventListener("submit", editFormHandler);
-
-closeEditPopupButton.addEventListener("click", () => closePopup(editPopup));
-closeAddCardPopupButton.addEventListener("click", () => closePopup(addPopup));
-closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
-
 // закрытие через кнопку esc
 function closeByEsc(evt) {
     if (evt.key === "Escape") {
@@ -162,7 +138,11 @@ function closeByEsc(evt) {
     }
 }
 
-const overlays = Array.from(document.querySelectorAll(".popup"));
+render();
+
+// СЛУШАТЕЛИ СОБЫТИЙ
+
+// закрытие кликом по оверлею
 
 overlays.forEach((overlay) => {
     overlay.addEventListener("click", (evt) => {
@@ -171,3 +151,27 @@ overlays.forEach((overlay) => {
         }
     });
 });
+
+addCardForm.addEventListener("submit", addFormHandler);
+
+openEditPopupButton.addEventListener("click", () => {
+    openPopup(editPopup);
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+    toggleButtonState(profileEditForm, config);
+    checkInputValidity(profileEditForm, nameInput, config);
+    checkInputValidity(profileEditForm, jobInput, config);
+});
+
+openAddCardPopupButton.addEventListener("click", () => {
+    openPopup(addPopup);
+    placeInput.value = "";
+    urlInput.value = "";
+    toggleButtonState(addCardForm, config);
+});
+
+profileEditForm.addEventListener("submit", editFormHandler);
+
+closeEditPopupButton.addEventListener("click", () => closePopup(editPopup));
+closeAddCardPopupButton.addEventListener("click", () => closePopup(addPopup));
+closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
