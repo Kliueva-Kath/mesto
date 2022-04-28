@@ -40,6 +40,8 @@ const jobInput = profileEditForm.elements.jobInput;
 
 // ФОРМА ДОБАВЛЕНИЯ
 const addCardForm = document.forms.addCardForm;
+const placeInput = addCardForm.elements.placeInput;
+const urlInput = addCardForm.elements.urlInput;
 
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
@@ -112,6 +114,7 @@ function addFormHandler(evt) {
 
 function openPopup(popup) {
     popup.classList.add("popup_opened");
+    document.addEventListener("keydown", closeByEsc);
 }
 
 function editFormHandler(evt) {
@@ -123,6 +126,7 @@ function editFormHandler(evt) {
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closeByEsc);
 }
 
 render();
@@ -132,15 +136,38 @@ render();
 addCardForm.addEventListener("submit", addFormHandler);
 
 openEditPopupButton.addEventListener("click", () => {
+    clearInputErrors();
     openPopup(editPopup);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 });
 
-openAddCardPopupButton.addEventListener("click", () => openPopup(addPopup));
+openAddCardPopupButton.addEventListener("click", () => {
+    clearInputErrors();
+    openPopup(addPopup);
+    placeInput.value = "";
+    urlInput.value = "";
+});
 
 profileEditForm.addEventListener("submit", editFormHandler);
 
 closeEditPopupButton.addEventListener("click", () => closePopup(editPopup));
 closeAddCardPopupButton.addEventListener("click", () => closePopup(addPopup));
 closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
+
+// закрытие через кнопку esc
+function closeByEsc(evt) {
+    if (evt.key === "Escape") {
+        closePopup(document.querySelector(".popup_opened"));
+    }
+}
+
+const overlays = Array.from(document.querySelectorAll(".popup"));
+
+overlays.forEach((overlay) => {
+    overlay.addEventListener("click", (evt) => {
+        if (evt.target === evt.currentTarget) {
+            closePopup(document.querySelector(".popup_opened"));
+        }
+    });
+});

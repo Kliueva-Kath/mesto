@@ -53,12 +53,10 @@ function toggleButtonState(form, config) {
     }
 }
 
-// function hasInvalidInput(form, config) {
-//   const inputs = Array.from(form.querySelectorAll(config.inputSelector));
-//    for inputs.some((input) => {
-//        return !input.validity.valid;
-//    });
-// }
+// функция очистки инпутов после закрытия формы
+function clearInputErrors() {
+    const inputs = Array.from(document.querySelectorAll(config, inputSelector));
+}
 
 enableValidation({
     formSelector: ".form",
