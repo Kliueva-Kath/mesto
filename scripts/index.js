@@ -4,7 +4,7 @@ const cardsContainer = document.querySelector(".elements__container");
 const cardsTemplate = document.querySelector(".cards-template");
 
 // ПОПАП РЕДАКТИРОВАНИЯ
-const editPopup = document.querySelector(".popup_type_edit");
+const popupEdit = document.querySelector(".popup_type_edit");
 
 // ФОРМА РЕДАКТИРОВАНИЯ
 const profileEditForm = document.forms.profileEditForm;
@@ -12,15 +12,15 @@ const nameInput = profileEditForm.elements.nameInput;
 const jobInput = profileEditForm.elements.jobInput;
 
 // ФОРМА ДОБАВЛЕНИЯ
-const addCardForm = document.forms.addCardForm;
-const placeInput = addCardForm.elements.placeInput;
-const urlInput = addCardForm.elements.urlInput;
+const cardAddingForm = document.forms.addCardForm;
+const placeInput = cardAddingForm.elements.placeInput;
+const urlInput = cardAddingForm.elements.urlInput;
 
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
 // ПОПАП  ДОБАВЛЕНИЯ КАРТОЧЕК
-const addPopup = document.querySelector(".popup_type_add-card");
+const popupAddCard = document.querySelector(".popup_type_add-card");
 
 // ПОПАП ПРОСМОТРА КАРТИНКИ
 const imagePopup = document.querySelector(".popup_type_image");
@@ -28,12 +28,12 @@ const openedImage = imagePopup.querySelector(".image__close-up");
 const openedImageTitle = imagePopup.querySelector(".image__title");
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
-const closeEditPopupButton = editPopup.querySelector(".popup__close-icon");
-const closeAddCardPopupButton = addPopup.querySelector(".popup__close-icon");
-const closeImagePopupButton = imagePopup.querySelector(".popup__close-icon");
+const popupEditExitIcon = popupEdit.querySelector(".popup__close-icon");
+const popupAddCardExitIcon = popupAddCard.querySelector(".popup__close-icon");
+const imagePopupExitIcon = imagePopup.querySelector(".popup__close-icon");
 
-const openAddCardPopupButton = document.querySelector(".profile__add-button");
-const openEditPopupButton = document.querySelector(".profile__edit-button");
+const popupAddCardOpenButton = document.querySelector(".profile__add-button");
+const popupEditOpenButton = document.querySelector(".profile__edit-button");
 
 const overlays = Array.from(document.querySelectorAll(".popup"));
 
@@ -79,12 +79,12 @@ function deleteCard(evt) {
 
 function addFormHandler(evt) {
     evt.preventDefault();
-    const placeInputValue = addCardForm.elements.placeInput.value;
-    const linkInputValue = addCardForm.elements.urlInput.value;
+    const placeInputValue = cardAddingForm.elements.placeInput.value;
+    const linkInputValue = cardAddingForm.elements.urlInput.value;
     const card = getElement({ name: placeInputValue, link: linkInputValue });
     cardsContainer.prepend(card);
-    closePopup(addPopup);
-    addCardForm.reset();
+    closePopup(popupAddCard);
+    cardAddingForm.reset();
 }
 
 function openPopup(popup) {
@@ -96,7 +96,7 @@ function editFormHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup(editPopup);
+    closePopup(popupEdit);
 }
 
 function closePopup(popup) {
@@ -125,10 +125,10 @@ overlays.forEach((overlay) => {
     });
 });
 
-addCardForm.addEventListener("submit", addFormHandler);
+cardAddingForm.addEventListener("submit", addFormHandler);
 
-openEditPopupButton.addEventListener("click", () => {
-    openPopup(editPopup);
+popupEditOpenButton.addEventListener("click", () => {
+    openPopup(popupEdit);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     toggleButtonState(profileEditForm, config);
@@ -136,15 +136,15 @@ openEditPopupButton.addEventListener("click", () => {
     checkInputValidity(profileEditForm, jobInput, config);
 });
 
-openAddCardPopupButton.addEventListener("click", () => {
-    openPopup(addPopup);
+popupAddCardOpenButton.addEventListener("click", () => {
+    openPopup(popupAddCard);
     placeInput.value = "";
     urlInput.value = "";
-    toggleButtonState(addCardForm, config);
+    toggleButtonState(cardAddingForm, config);
 });
 
 profileEditForm.addEventListener("submit", editFormHandler);
 
-closeEditPopupButton.addEventListener("click", () => closePopup(editPopup));
-closeAddCardPopupButton.addEventListener("click", () => closePopup(addPopup));
-closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
+popupEditExitIcon.addEventListener("click", () => closePopup(popupEdit));
+popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
+imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
