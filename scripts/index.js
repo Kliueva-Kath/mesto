@@ -131,16 +131,18 @@ popupEditOpenButton.addEventListener("click", () => {
     openPopup(popupEdit);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-    toggleButtonState(profileEditForm, config);
-    checkInputValidity(profileEditForm, nameInput, config);
-    checkInputValidity(profileEditForm, jobInput, config);
+    disableButtonOnOpening(profileEditForm, config);
+    hideInputError(profileEditForm, nameInput, config);
+    hideInputError(profileEditForm, jobInput, config);
 });
 
 popupAddCardOpenButton.addEventListener("click", () => {
     openPopup(popupAddCard);
     placeInput.value = "";
     urlInput.value = "";
-    toggleButtonState(cardAddingForm, config);
+    disableButtonOnOpening(cardAddingForm, config);
+    hideInputError(cardAddingForm, placeInput, config);
+    hideInputError(cardAddingForm, urlInput, config);
 });
 
 profileEditForm.addEventListener("submit", editFormHandler);

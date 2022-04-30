@@ -61,4 +61,10 @@ function toggleButtonState(form, config) {
     }
 }
 
+function disableButtonOnOpening(form, config) {
+    const button = form.querySelector(config.buttonSelector);
+    button.classList.add(config.inactiveButtonClass);
+    button.setAttribute("disabled", true);
+}
+
 enableValidation(config);
