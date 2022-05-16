@@ -22,15 +22,15 @@ const profileJob = document.querySelector(".profile__job");
 // ПОПАП  ДОБАВЛЕНИЯ КАРТОЧЕК
 const popupAddCard = document.querySelector(".popup_type_add-card");
 
-// ПОПАП ПРОСМОТРА КАРТИНКИ
+/* // ПОПАП ПРОСМОТРА КАРТИНКИ
 const imagePopup = document.querySelector(".popup_type_image");
 const openedImage = imagePopup.querySelector(".image__close-up");
 const openedImageTitle = imagePopup.querySelector(".image__title");
-
+ */
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
 const popupEditExitIcon = popupEdit.querySelector(".popup__close-icon");
 const popupAddCardExitIcon = popupAddCard.querySelector(".popup__close-icon");
-const imagePopupExitIcon = imagePopup.querySelector(".popup__close-icon");
+/* const imagePopupExitIcon = imagePopup.querySelector(".popup__close-icon"); */
 
 const popupAddCardOpenButton = document.querySelector(".profile__add-button");
 const popupEditOpenButton = document.querySelector(".profile__edit-button");
@@ -39,12 +39,12 @@ const overlays = Array.from(document.querySelectorAll(".popup"));
 
 // ФУНКЦИИ
 
-function render() {
+/* function render() {
     const html = initialCards.map(getElement);
     cardsContainer.append(...html);
-}
+} */
 
-function getElement(item) {
+/* function getElement(item) {
     const getElementTemplate = cardsTemplate.content.cloneNode(true);
     const cardTitle = getElementTemplate.querySelector(".element__title");
     const cardLink = getElementTemplate.querySelector(".element__photo");
@@ -63,19 +63,19 @@ function getElement(item) {
     });
     cardLink.addEventListener("click", () => openImagePopup(item));
     return getElementTemplate;
-}
+} */
 
-function openImagePopup(element) {
+/* function openImagePopup(element) {
     openedImage.src = element.link;
     openedImageTitle.textContent = element.name;
     openedImage.alt = element.name;
     openPopup(imagePopup);
-}
+} */
 
-function deleteCard(evt) {
+/* function deleteCard(evt) {
     const card = evt.target.closest(".element");
     card.remove();
-}
+} */
 
 function addFormHandler(evt) {
     evt.preventDefault();
@@ -111,7 +111,7 @@ function closeByEsc(evt) {
     }
 }
 
-render();
+// render();
 
 // СЛУШАТЕЛИ СОБЫТИЙ
 
@@ -149,4 +149,6 @@ profileEditForm.addEventListener("submit", editFormHandler);
 
 popupEditExitIcon.addEventListener("click", () => closePopup(popupEdit));
 popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
-imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
+/* imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
+ */
+export { openPopup, closePopup };
