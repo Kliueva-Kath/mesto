@@ -128,3 +128,4 @@ function hideInputError(form, input, config) {
 } 
 
  enableValidation(config);   */
+ 
