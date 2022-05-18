@@ -127,4 +127,4 @@ function hideInputError(form, input, config) {
     button.setAttribute("disabled", true);
 } 
 
- enableValidation(config);  */
+ enableValidation(config);   */
