@@ -1,11 +1,4 @@
-const config = {
-   /*  formSelector: ".form", */
-    inputSelector: ".form__input",
-    buttonSelector: ".form__save-button",
-    inactiveButtonClass: "form__save-button_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_visible",
-};
+
 
 class FormValidator {
 	constructor(config, formSelector) {
@@ -14,7 +7,7 @@ class FormValidator {
 		this._button = config.buttonSelector;
 		this._inactiveButton = config.inactiveButtonClass;
 		this._inputError = config.inputErrorClass;
-		this._error = config.errorClass;
+		this._error = config.errorClass; 
 	}
 	
 	enableValidation() {
@@ -25,12 +18,12 @@ class FormValidator {
 	}
 	
 	_setEventListeners() {
-		this._toggleButtonState();
+		 this._toggleButtonState(); 
 
-		this._input.addEventListener("input", () => {
+		 this._input.addEventListener("input", () => {
             this._checkInputValidity();
-            this._toggleButtonState();
-        });
+             this._toggleButtonState(); 
+        }); 
 	}
 
 	_checkInputValidity() {
@@ -55,7 +48,7 @@ class FormValidator {
     errorElement.classList.remove(this._error);
 	}
 
-	_toggleButtonState() {
+	 _toggleButtonState() {
     if (!this._form.checkValidity()) {
         this._button.classList.add(this._inactiveButton);
         this._button.setAttribute("disabled", true);
@@ -63,35 +56,28 @@ class FormValidator {
         this._button.classList.remove(this._inactiveButton);
         this._button.removeAttribute("disabled", true);
     }
-	}
+	} 
 
 	_disableButtonOnOpening() {
     this._button.classList.add(this._inactiveButton);
     this._button.setAttribute("disabled", true);
 	}
-	
 }
 
-const profileEditFormValidator = new FormValidator(config, document.forms.profileEditForm);
 
-editFormValidator.enableValidation();
+export { FormValidator };
 
-const cardAddingFormValidator = new FormValidator(config, document.forms.addCardForm);
-
-cardAddingFormValidator.enableValidation();
-
-
-/* function enableValidation(config) {
+/*   function enableValidation(config) {
     const forms = Array.from(document.querySelectorAll(config.formSelector));
     forms.forEach((form) => {
         form.addEventListener("submit", (evt) => {
             evt.preventDefault();
         });
         setEventListeners(form, config);
-    }); */
-}
+    }); 
+} 
 
-/* function setEventListeners(form, config) {
+ function setEventListeners(form, config) {
     toggleButtonState(form, config);
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
     inputs.forEach((input) => {
@@ -100,17 +86,17 @@ cardAddingFormValidator.enableValidation();
             toggleButtonState(form, config);
         });
     });
-} */
+} 
 
-/* function checkInputValidity(form, input, config) {
+ function checkInputValidity(form, input, config) {
     if (!input.validity.valid) {
         showInputError(form, input, input.validationMessage, config);
     } else {
         hideInputError(form, input, config);
     }
-} */
+} 
 
-/* function showInputError(form, input, errorMessage, config) {
+ function showInputError(form, input, errorMessage, config) {
     const errorElement = form.querySelector(`.${input.id}-error`);
     input.classList.add(config.inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -122,9 +108,9 @@ function hideInputError(form, input, config) {
     input.classList.remove(config.inputErrorClass);
     errorElement.textContent = "";
     errorElement.classList.remove(config.errorClass);
-} */
+} 
 
-/* function toggleButtonState(form, config) {
+ function toggleButtonState(form, config) {
     const button = form.querySelector(config.buttonSelector);
     if (!form.checkValidity()) {
         button.classList.add(config.inactiveButtonClass);
@@ -133,12 +119,12 @@ function hideInputError(form, input, config) {
         button.classList.remove(config.inactiveButtonClass);
         button.removeAttribute("disabled", true);
     }
-} */
+} 
 
-/* function disableButtonOnOpening(form, config) {
+ function disableButtonOnOpening(form, config) {
     const button = form.querySelector(config.buttonSelector);
     button.classList.add(config.inactiveButtonClass);
     button.setAttribute("disabled", true);
-} */
+} 
 
-/* enableValidation(config); */
+ enableValidation(config);  */

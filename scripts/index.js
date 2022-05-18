@@ -1,3 +1,5 @@
+import { FormValidator } from "./FormValidator.js"
+
 // DOM-ЭЛЕМЕНТЫ
 
 const cardsContainer = document.querySelector(".elements__container");
@@ -151,4 +153,23 @@ popupEditExitIcon.addEventListener("click", () => closePopup(popupEdit));
 popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
 /* imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
  */
+
+const config = {
+   /*  formSelector: ".form", */
+    inputSelector: ".form__input",
+    buttonSelector: ".form__save-button",
+    inactiveButtonClass: "form__save-button_inactive",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__input-error_visible" 
+};
+
+const profileEditFormValidator = new FormValidator(config, document.forms.profileEditForm);
+
+profileEditFormValidator.enableValidation();
+
+const cardAddingFormValidator = new FormValidator(config, document.forms.addCardForm);
+
+cardAddingFormValidator.enableValidation();
+
+
 export { openPopup, closePopup };
