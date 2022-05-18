@@ -61,8 +61,8 @@ class FormValidator {
 	_disableButtonOnOpening() {
     this._button.classList.add(this._inactiveButton);
     this._button.setAttribute("disabled", true);
-	}
-} */
+	} */
+} 
 
 
 export { FormValidator };
