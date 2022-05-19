@@ -1,6 +1,4 @@
-import { openPopup, closePopup } from "./index.js";
-
-
+import { openPopup, closePopup } from "./utils.js";
 
 
 // необходимые для построения класса DOM-элементы
