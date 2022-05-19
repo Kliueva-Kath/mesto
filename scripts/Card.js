@@ -1,32 +1,7 @@
-import { openPopup, closePopup } from "./index.js";
+import { openPopup, closePopup } from "./utils.js";
 
-// НАЧАЛЬНЫЕ КАРТОЧКИ
-const initialCards = [{
-        name: "Байкал",
-        link: "https://images.unsplash.com/photo-1551845041-63e8e76836ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1889&q=80",
-    },
-    {
-        name: "Карелия",
-        link: "https://images.unsplash.com/photo-1573156667788-3b0a869a97b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-    },
-    {
-        name: "Красноярск",
-        link: "https://images.unsplash.com/photo-1597125760773-b0166e249ea7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80",
-    },
-    {
-        name: "Новосиль",
-        link: "https://images.unsplash.com/photo-1444894423756-1bb106dce5a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=771&q=80",
-    },
-    {
-        name: "Тулиновка",
-        link: "https://images.unsplash.com/photo-1516128935666-9742cf27e24c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-    },
-    {
-        name: "Владивосток",
-        link: "https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=433&q=80",
-    },
-];
 
+// необходимые для построения класса DOM-элементы
 const imagePopup = document.querySelector(".popup_type_image");
 const openedImage = imagePopup.querySelector(".image__close-up");
 const openedImageTitle = imagePopup.querySelector(".image__title");
@@ -120,11 +95,5 @@ class Card {
     }
 }
 
-// добавление карточек на страницу
 
-initialCards.forEach((item) => {
-    const card = new Card(item, ".cards-template");
-    const cardElement = card.generateCard();
-
-    document.querySelector(".elements__container").append(cardElement);
-});
+export { Card }

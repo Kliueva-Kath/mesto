@@ -1,5 +1,4 @@
 
-
 class FormValidator {
 	constructor(config, formSelector) {
 		this._form = formSelector;
@@ -14,15 +13,20 @@ class FormValidator {
 		this._form.addEventListener("submit", (evt) => {
 			evt.preventDefault();
 		})
-		this._setEventListeners();
+		this._setEventListeners(); 
 	}
 	
 	_setEventListeners() {
+<<<<<<< HEAD
 		this._toggleButtonState(); 
 
+=======
+		 this._toggleButtonState();  
+>>>>>>> f368c53d73bf421cbb7ff92348c80b725b0dd254
 		 this._input.addEventListener("input", () => {
             this._checkInputValidity();
-            this._toggleButtonState(); 
+            this._toggleButtonState();  
+
         }); 
 	}
 
@@ -30,7 +34,7 @@ class FormValidator {
 		 if (!this._input.validity.valid) {
        this._showInputError();
     } else {
-         this._hideInputError();
+        this._hideInputError();
     }
 	}
 
@@ -48,7 +52,7 @@ class FormValidator {
     errorElement.classList.remove(this._error);
 	}
 
-	 _toggleButtonState() {
+	   _toggleButtonState() {
     if (!this._form.checkValidity()) {
         this._button.classList.add(this._inactiveButton);
         this._button.setAttribute("disabled", true);
@@ -56,14 +60,24 @@ class FormValidator {
         this._button.classList.remove(this._inactiveButton);
         this._button.removeAttribute("disabled", true);
     }
-	} 
+	}  
+}
+
+export { FormValidator }
+
+
+
+
 
 	_disableButtonOnOpening() {
     this._button.classList.add(this._inactiveButton);
     this._button.setAttribute("disabled", true);
+<<<<<<< HEAD
 	} 
 } 
 
+=======
+>>>>>>> f368c53d73bf421cbb7ff92348c80b725b0dd254
 
 export { FormValidator };
 
