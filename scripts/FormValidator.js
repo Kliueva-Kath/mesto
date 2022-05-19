@@ -22,7 +22,11 @@ class FormValidator {
 
 		 this._input.addEventListener("input", () => {
             this._checkInputValidity();
+<<<<<<< HEAD
               this._toggleButtonState();  
+=======
+            this._toggleButtonState(); 
+>>>>>>> origin/OOP-refactoring
         }); 
 	}
 
@@ -58,11 +62,16 @@ class FormValidator {
     }
 	} 
 
-	_disableButtonOnOpening() {
+/*	_disableButtonOnOpening() {
     this._button.classList.add(this._inactiveButton);
     this._button.setAttribute("disabled", true);
+<<<<<<< HEAD
 	} 
 }
+=======
+	} */
+} 
+>>>>>>> origin/OOP-refactoring
 
 
 export { FormValidator };
@@ -127,4 +136,5 @@ function hideInputError(form, input, config) {
     button.setAttribute("disabled", true);
 } 
 
- enableValidation(config);  */
+ enableValidation(config);   */
+ 
