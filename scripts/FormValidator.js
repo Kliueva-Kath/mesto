@@ -71,6 +71,7 @@ class FormValidator {
         }
         // вызывается в index.js при открытии попапов для сброса состояния кнопки
     disableButtonOnOpening() {
+        this._form.querySelector(this._button).classList.add(this._inactiveButton);
         this._form.querySelector(this._button).setAttribute("disabled", true);
     }
 }
