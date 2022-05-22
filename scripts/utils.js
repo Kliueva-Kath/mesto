@@ -1,10 +1,7 @@
-
 function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", closeByEsc);
 }
-
-	
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
@@ -18,5 +15,7 @@ function closeByEsc(evt) {
     }
 }
 
+// попап просмотра картинки
+const imagePopup = document.querySelector(".popup_type_image");
 
-export { openPopup, closePopup }
+export { openPopup, closePopup, imagePopup };

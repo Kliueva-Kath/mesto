@@ -1,12 +1,4 @@
-import { openPopup, closePopup } from "./utils.js";
-
-
-// необходимые для построения класса DOM-элементы
-const imagePopup = document.querySelector(".popup_type_image");
-const openedImage = imagePopup.querySelector(".image__close-up");
-const openedImageTitle = imagePopup.querySelector(".image__title");
-const imagePopupExitIcon = imagePopup.querySelector(".popup__close-icon");
-
+import { openPopup, closePopup, imagePopup } from "./utils.js";
 class Card {
     constructor(data, cardSelector) {
         this._cardSelector = cardSelector;
@@ -53,6 +45,9 @@ class Card {
 
     // открытие попапа картинки
     _handleOpenPopup() {
+        const openedImage = document.querySelector(".image__close-up");
+        const openedImageTitle = document.querySelector(".image__title");
+
         openedImage.src = this._link;
         openedImageTitle.textContent = this._name;
         openedImage.alt = this._name;
@@ -87,13 +82,7 @@ class Card {
             .addEventListener("click", () => {
                 this._handleOpenPopup();
             });
-
-        // событие закрытия попапа
-        imagePopupExitIcon.addEventListener("click", () => {
-            this._handleClosePopup();
-        });
     }
 }
 
-
-export { Card }
+export { Card };

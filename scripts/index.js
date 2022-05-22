@@ -1,8 +1,8 @@
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
-import { openPopup, closePopup } from "./utils.js";
+import { openPopup, closePopup, imagePopup } from "./utils.js";
 
-// DOM-ЭЛЕМЕНТЫ
+// ПЕРЕМЕННЫЕ
 
 const cardsContainer = document.querySelector(".elements__container");
 
@@ -28,12 +28,37 @@ const popupAddCard = document.querySelector(".popup_type_add-card");
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
 const popupEditExitIcon = popupEdit.querySelector(".popup__close-icon");
 const popupAddCardExitIcon = popupAddCard.querySelector(".popup__close-icon");
-/* const imagePopupExitIcon = imagePopup.querySelector(".popup__close-icon"); */
+const imagePopupExitIcon = imagePopup.querySelector(".popup__close-icon");
 
 const popupAddCardOpenButton = document.querySelector(".profile__add-button");
 const popupEditOpenButton = document.querySelector(".profile__edit-button");
 
 const overlays = Array.from(document.querySelectorAll(".popup"));
+
+// ВАЛИДАЦИЯ
+
+// данные для валидации форм
+const config = {
+    inputSelector: ".form__input",
+    buttonSelector: ".form__save-button",
+    inactiveButtonClass: "form__save-button_inactive",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__input-error_visible",
+};
+
+// подключение валидации форм
+
+const profileEditFormValidator = new FormValidator(
+    config,
+    document.forms.profileEditForm
+);
+profileEditFormValidator.enableValidation();
+
+const cardAddingFormValidator = new FormValidator(
+    config,
+    document.forms.addCardForm
+);
+cardAddingFormValidator.enableValidation();
 
 // добавление карточек на страницу
 
@@ -128,28 +153,4 @@ profileEditForm.addEventListener("submit", editFormHandler);
 
 popupEditExitIcon.addEventListener("click", () => closePopup(popupEdit));
 popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
-
-// ВАЛИДАЦИЯ
-
-// данные для валидации форм
-const config = {
-    inputSelector: ".form__input",
-    buttonSelector: ".form__save-button",
-    inactiveButtonClass: "form__save-button_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_visible",
-};
-
-// подключение валидации форм
-
-const profileEditFormValidator = new FormValidator(
-    config,
-    document.forms.profileEditForm
-);
-profileEditFormValidator.enableValidation();
-
-const cardAddingFormValidator = new FormValidator(
-    config,
-    document.forms.addCardForm
-);
-cardAddingFormValidator.enableValidation();
+imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
