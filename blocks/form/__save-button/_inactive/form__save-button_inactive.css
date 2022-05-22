@@ -4,3 +4,7 @@
     border: 1px solid #000000;
     color: #000000;
 }
+
+.form__save-button:hover {
+    cursor: default;
+}
