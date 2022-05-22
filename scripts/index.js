@@ -106,8 +106,7 @@ popupEditOpenButton.addEventListener("click", () => {
 
 popupAddCardOpenButton.addEventListener("click", () => {
     openPopup(popupAddCard);
-    placeInput.value = "";
-    urlInput.value = "";
+    cardAddingForm.reset();
     // сброс валидации при новом открытии
     cardAddingFormValidator.disableButtonOnOpening();
     cardAddingFormValidator.clearErrorsOnOpening(placeInput);
