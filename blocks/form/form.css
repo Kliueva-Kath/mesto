@@ -4,20 +4,4 @@
     outline: none;
     display: flex;
     flex-direction: column;
-    /* padding-top: 47px; */
-    gap: 30px;
-    position: relative;
 }
-
-
-/* @media screen and (max-width: 900px) {
-    .form {
-        padding-top: 60px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .form {
-        padding-top: 72px;
-    }
-} */
