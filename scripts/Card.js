@@ -54,11 +54,6 @@ class Card {
         openPopup(imagePopup);
     }
 
-    // закрытие попапа картинки
-    _handleClosePopup() {
-        closePopup(imagePopup);
-    }
-
     // слушатели событий
 
     _setEventListeners() {
