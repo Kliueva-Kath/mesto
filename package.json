@@ -1,0 +1,19 @@
+{
+    "name": "mesto",
+    "version": "1.0.0",
+    "description": "praktikum project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Kliueva-Kath/mesto.git"
+    },
+    "author": "Ekaterina Kliueva",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Kliueva-Kath/mesto/issues"
+    },
+    "homepage": "https://github.com/Kliueva-Kath/mesto#readme"
+}

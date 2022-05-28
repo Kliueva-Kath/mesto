@@ -1,5 +1,6 @@
-import { openPopup, closePopup, imagePopup } from "./utils.js";
-class Card {
+import { openPopup, closePopup } from "../utils/utils.js";
+import { imagePopup } from "../utils/constants.js";
+export class Card {
     constructor(data, cardSelector) {
         this._cardSelector = cardSelector;
         this._name = data.name;
@@ -79,5 +80,3 @@ class Card {
             });
     }
 }
-
-export { Card };
