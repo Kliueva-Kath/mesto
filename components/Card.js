@@ -1,10 +1,11 @@
 import { openPopup, closePopup } from "../utils/utils.js";
 import { imagePopup } from "../utils/constants.js";
-export class Card {
-    constructor(data, cardSelector) {
+export default class Card {
+    constructor({ data, handleCardClick }, cardSelector) {
         this._cardSelector = cardSelector;
         this._name = data.name;
         this._link = data.link;
+        this.handleCardClick = handleCardClick;
     }
 
     // получение разметки template-элемента и вставка данных в разметку
@@ -44,16 +45,16 @@ export class Card {
             .classList.toggle("element__like_active");
     }
 
-    // открытие попапа картинки
-    _handleOpenPopup() {
-        const openedImage = document.querySelector(".image__close-up");
-        const openedImageTitle = document.querySelector(".image__title");
+    /*     // открытие попапа картинки
+              _handleOpenPopup() {
+                  const openedImage = document.querySelector(".image__close-up");
+                  const openedImageTitle = document.querySelector(".image__title");
 
-        openedImage.src = this._link;
-        openedImageTitle.textContent = this._name;
-        openedImage.alt = this._name;
-        openPopup(imagePopup);
-    }
+                  openedImage.src = this._link;
+                  openedImageTitle.textContent = this._name;
+                  openedImage.alt = this._name;
+                  openPopup(imagePopup);
+              } */
 
     // слушатели событий
 
@@ -73,10 +74,11 @@ export class Card {
             });
 
         // событие открытия попапа
-        this._element
-            .querySelector(".element__photo")
-            .addEventListener("click", () => {
-                this._handleOpenPopup();
-            });
+        this.handleCardClick();
+        /* this._element
+                        .querySelector(".element__photo")
+                        .addEventListener("click", () => {
+                            this._handleOpenPopup();
+                        }); */
     }
 }

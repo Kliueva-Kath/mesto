@@ -1,7 +1,7 @@
 // ПЕРЕМЕННЫЕ
 
 // попап просмотра картинки
-export const imagePopup = document.querySelector(".popup_type_image");
+// export const imagePopupSelector = ".popup_type_image";
 
 export const cardsContainer = document.querySelector(".elements__container");
 

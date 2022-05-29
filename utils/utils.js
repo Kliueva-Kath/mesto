@@ -1,4 +1,4 @@
-export function openPopup(popup) {
+/* export function openPopup(popup) {
     popup.classList.add("popup_opened");
     document.addEventListener("keydown", closeByEsc);
 }
@@ -13,4 +13,4 @@ export function closeByEsc(evt) {
     if (evt.key === "Escape") {
         closePopup(document.querySelector(".popup_opened"));
     }
-}
+} */

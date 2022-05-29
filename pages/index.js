@@ -1,9 +1,12 @@
-import { FormValidator } from "../components/FormValidator.js";
-import { Card } from "../components/Card.js";
-import { Section } from "../components/Section.js";
-import { openPopup, closePopup } from "../utils/utils.js";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+// import { openPopup, closePopup } from "../utils/utils.js";
+
 import {
-    imagePopup,
+    imagePopupSelector,
     cardsContainer,
     popupEdit,
     profileEditForm,
@@ -76,7 +79,7 @@ function addFormHandler(evt) {
     const cardGenerated = cardNew.generateCard();
     cardsContainer.prepend(cardGenerated);
 
-    closePopup(popupAddCard);
+    // closePopup(popupAddCard);
     cardAddingForm.reset();
 }
 
@@ -84,42 +87,44 @@ function editFormHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup(popupEdit);
+    //   closePopup(popupEdit);
 }
 
 // СЛУШАТЕЛИ СОБЫТИЙ
 
-popupEditOpenButton.addEventListener("click", () => {
+/* popupEditOpenButton.addEventListener("click", () => {
     openPopup(popupEdit);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     // сброс валидации при новом открытии
     profileEditFormValidator.clearErrorsOnOpening(nameInput);
     profileEditFormValidator.clearErrorsOnOpening(jobInput);
-});
+}); */
 
-popupAddCardOpenButton.addEventListener("click", () => {
+/* popupAddCardOpenButton.addEventListener("click", () => {
     openPopup(popupAddCard);
     cardAddingForm.reset();
     // сброс валидации при новом открытии
     cardAddingFormValidator.disableButtonOnOpening();
     cardAddingFormValidator.clearErrorsOnOpening(placeInput);
     cardAddingFormValidator.clearErrorsOnOpening(urlInput);
-});
+}); */
 
 // закрытие кликом по оверлею
-overlays.forEach((overlay) => {
+/* overlays.forEach((overlay) => {
     overlay.addEventListener("mousedown", (evt) => {
         if (evt.target === evt.currentTarget) {
             closePopup(document.querySelector(".popup_opened"));
         }
     });
-});
+}); */
 
 cardAddingForm.addEventListener("submit", addFormHandler);
 
 profileEditForm.addEventListener("submit", editFormHandler);
 
-popupEditExitIcon.addEventListener("click", () => closePopup(popupEdit));
+popupEditExitIcon.addEventListener("click", () => PopupWithImage.close());
 popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
 imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
+
+const popupWithImage = new PopupWithImage(".popup_type_image");
