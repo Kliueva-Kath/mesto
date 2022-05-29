@@ -55,6 +55,8 @@ const cardList = new Section({
     cardListContainer
 );
 
+cardList.renderItems();
+
 /* initialCards.forEach((item) => {
     const card = new Card(item, ".cards-template");
     const cardElement = card.generateCard();
