@@ -25,12 +25,12 @@ export const profileJob = document.querySelector(".profile__job");
 export const popupAddCard = document.querySelector(".popup_type_add-card");
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
-export const popupEditExitIcon = popupEdit.querySelector(".popup__close-icon");
+/* export const popupEditExitIcon = popupEdit.querySelector(".popup__close-icon");
 export const popupAddCardExitIcon =
     popupAddCard.querySelector(".popup__close-icon");
 export const imagePopupExitIcon =
     imagePopup.querySelector(".popup__close-icon");
-
+ */
 export const popupAddCardOpenButton = document.querySelector(
     ".profile__add-button"
 );

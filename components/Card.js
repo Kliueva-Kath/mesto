@@ -1,11 +1,11 @@
-import { openPopup, closePopup } from "../utils/utils.js";
-import { imagePopup } from "../utils/constants.js";
+// import { openPopup, closePopup } from "../utils/utils.js";
+// import { imagePopup } from "../utils/constants.js";
 export default class Card {
     constructor({ data, handleCardClick }, cardSelector) {
         this._cardSelector = cardSelector;
         this._name = data.name;
         this._link = data.link;
-        this.handleCardClick = handleCardClick;
+        this._handleCardClick = handleCardClick;
     }
 
     // получение разметки template-элемента и вставка данных в разметку
@@ -30,6 +30,7 @@ export default class Card {
 
         this._setEventListeners();
 
+        this._handleCardClick.bind(this);
         return this._element;
     }
 
@@ -46,15 +47,15 @@ export default class Card {
     }
 
     /*     // открытие попапа картинки
-              _handleOpenPopup() {
-                  const openedImage = document.querySelector(".image__close-up");
-                  const openedImageTitle = document.querySelector(".image__title");
+                                    _handleOpenPopup() {
+                                        const openedImage = document.querySelector(".image__close-up");
+                                        const openedImageTitle = document.querySelector(".image__title");
 
-                  openedImage.src = this._link;
-                  openedImageTitle.textContent = this._name;
-                  openedImage.alt = this._name;
-                  openPopup(imagePopup);
-              } */
+                                        openedImage.src = this._link;
+                                        openedImageTitle.textContent = this._name;
+                                        openedImage.alt = this._name;
+                                        openPopup(imagePopup);
+                                    } */
 
     // слушатели событий
 
@@ -74,11 +75,11 @@ export default class Card {
             });
 
         // событие открытия попапа
-        this.handleCardClick();
+        // this._handleCardClick();
         /* this._element
-                        .querySelector(".element__photo")
-                        .addEventListener("click", () => {
-                            this._handleOpenPopup();
-                        }); */
+                                                                    .querySelector(".element__photo")
+                                                                    .addEventListener("click", () => {
+                                                                        this._handleOpenPopup();
+                                                                    }); */
     }
 }

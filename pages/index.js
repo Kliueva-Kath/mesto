@@ -6,10 +6,10 @@ import PopupWithForm from "../components/PopupWithForm.js";
 // import { openPopup, closePopup } from "../utils/utils.js";
 
 import {
-    imagePopupSelector,
+    // imagePopupSelector,
     cardsContainer,
-    popupEdit,
-    profileEditForm,
+    // popupEdit,
+    // profileEditForm,
     nameInput,
     jobInput,
     cardAddingForm,
@@ -17,13 +17,13 @@ import {
     urlInput,
     profileName,
     profileJob,
-    popupAddCard,
-    popupEditExitIcon,
-    popupAddCardExitIcon,
-    imagePopupExitIcon,
-    popupAddCardOpenButton,
-    popupEditOpenButton,
-    overlays,
+    // popupAddCard,
+    // popupEditExitIcon,
+    // popupAddCardExitIcon,
+    // imagePopupExitIcon,
+    // popupAddCardOpenButton,
+    // popupEditOpenButton,
+    // overlays,
     config,
     initialCards,
     cardListContainer,
@@ -50,7 +50,17 @@ cardAddingFormValidator.enableValidation();
 const cardList = new Section({
         items: initialCards,
         renderer: (item) => {
-            const card = new Card(item, ".cards-template");
+            const card = new Card({
+                    data: item,
+                    handleCardClick: (item) => {
+                        console.log(item.link);
+                        item.link.addEventListener("click", (item) => {
+                            popupWithImage.open({ name: item.name, link: item.link });
+                        });
+                    },
+                },
+                ".cards-template"
+            );
             const cardElement = card.generateCard();
             cardList.addItem(cardElement);
         },
@@ -123,8 +133,8 @@ cardAddingForm.addEventListener("submit", addFormHandler);
 
 profileEditForm.addEventListener("submit", editFormHandler);
 
-popupEditExitIcon.addEventListener("click", () => PopupWithImage.close());
-popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
-imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
+// popupEditExitIcon.addEventListener("click", () => PopupWithImage.close());
+// popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
+// imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
 
 const popupWithImage = new PopupWithImage(".popup_type_image");
