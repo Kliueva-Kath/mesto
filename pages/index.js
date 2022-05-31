@@ -48,25 +48,19 @@ cardAddingFormValidator.enableValidation();
 // добавление карточек на страницу
 
 const cardList = new Section({
-        items: initialCards,
-        renderer: (item) => {
-            const card = new Card({
-                    data: item,
-                    handleCardClick: (item) => {
-                        console.log(item.link);
-                        item.link.addEventListener("click", (item) => {
-                            popupWithImage.open({ name: item.name, link: item.link });
-                        });
-                    },
-                },
-                ".cards-template"
-            );
-            const cardElement = card.generateCard();
-            cardList.addItem(cardElement);
-        },
-    },
-    cardListContainer
-);
+	items: initialCards,
+	renderer: (item) => {
+		const card = new Card({
+			data: item,
+			handleCardClick: (name, link) => {
+				popupWithImage.open(name, link);
+			}
+		}, ".cards-template");
+		const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+
+	}
+},  cardListContainer)
 
 cardList.renderItems();
 
