@@ -131,4 +131,5 @@ profileEditForm.addEventListener("submit", editFormHandler);
 // popupAddCardExitIcon.addEventListener("click", () => closePopup(popupAddCard));
 // imagePopupExitIcon.addEventListener("click", () => closePopup(imagePopup));
 
-const popupWithImage = new PopupWithImage(".popup_type_image");
+const popupWithImage = new PopupWithImage(".popup_type_image", ".popup__close-icon");
+popupWithImage.setEventListeners();
