@@ -1,10 +1,10 @@
 // import { openPopup, closePopup } from "../utils/utils.js";
 // import { imagePopup } from "../utils/constants.js";
 export default class Card {
-    constructor({ data, handleCardClick }, cardSelector) {
+    constructor({ name, link, handleCardClick }, cardSelector) {
         this._cardSelector = cardSelector;
-        this._name = data.name;
-        this._link = data.link;
+        this._name = name;
+        this._link = link;
         this._handleCardClick = handleCardClick;
     }
 

@@ -55,7 +55,8 @@ const cardList = new Section({
 	items: initialCards,
 	renderer: (item) => {
 		const card = new Card({
-			data: item,
+			name: item.name,
+			link: item.link,
 			handleCardClick: (name, link) => {
 				popupWithImage.open(name, link);
 			}
@@ -80,7 +81,7 @@ popupWithImage.setEventListeners();
 
 const PopupAddCard = new PopupWithForm({
 	popupSelector: ".popup_type_add-card", closeButtonSelector: ".popup__close-icon", handleFormSubmit: (formData) => {
-		const card = new Card({ data: formData }, ".cards-template")
+		const card = new Card({ name: formData[name = "placeInput"], link: formData[name = "urlInput"] }, ".cards-template")
 		const cardElement = card.generateCard();
     cardList.addNewCard(cardElement);
 	}
@@ -102,12 +103,12 @@ const PopupAddCard = new PopupWithForm({
     cardAddingForm.reset();
 } */
 
-function editFormHandler(evt) {
+/* function editFormHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     //   closePopup(popupEdit);
-}
+} */
 
 // СЛУШАТЕЛИ СОБЫТИЙ
 
