@@ -30,7 +30,6 @@ export default class Card {
 
         this._setEventListeners();
 
-        this._handleCardClick.bind(this);
         return this._element;
     }
 
@@ -78,11 +77,5 @@ export default class Card {
 			  this._element.querySelector(".element__photo").addEventListener("click", () => {
 					this._handleCardClick(this._name, this._link)
 				})
-        // this._handleCardClick();
-        /* this._element
-                                                                    .querySelector(".element__photo")
-                                                                    .addEventListener("click", () => {
-                                                                        this._handleOpenPopup();
-                                                                    }); */
     }
 }

@@ -22,7 +22,7 @@ export const profileName = document.querySelector(".profile__name");
 export const profileJob = document.querySelector(".profile__job");
 
 // ПОПАП  ДОБАВЛЕНИЯ КАРТОЧЕК
-export const popupAddCard = document.querySelector(".popup_type_add-card");
+// export const popupAddCard = document.querySelector(".popup_type_add-card");
 
 // ОТКРЫТИЕ И ЗАКРЫТИЕ ПОПАПОВ
 /* export const popupEditExitIcon = popupEdit.querySelector(".popup__close-icon");
@@ -38,7 +38,7 @@ export const popupEditOpenButton = document.querySelector(
     ".profile__edit-button"
 );
 
-export const overlays = Array.from(document.querySelectorAll(".popup"));
+// export const overlays = Array.from(document.querySelectorAll(".popup"));
 
 // данные для валидации форм
 export const config = {
