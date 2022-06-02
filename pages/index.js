@@ -3,6 +3,7 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js"
 // import { openPopup, closePopup } from "../utils/utils.js";
 
 import {
@@ -22,7 +23,7 @@ import {
     // popupAddCardExitIcon,
     // imagePopupExitIcon,
     popupAddCardOpenButton,
-    // popupEditOpenButton,
+    popupEditOpenButton,
     // overlays,
     config,
     initialCards,
@@ -81,7 +82,12 @@ popupWithImage.setEventListeners();
 
 const PopupAddCard = new PopupWithForm({
 	popupSelector: ".popup_type_add-card", closeButtonSelector: ".popup__close-icon", handleFormSubmit: (formData) => {
-		const card = new Card({ name: formData[name = "placeInput"], link: formData[name = "urlInput"] }, ".cards-template")
+		const card = new Card({ 
+			name: formData[name = "placeInput"], 
+			link: formData[name = "urlInput"], 
+			handleCardClick: (name, link) => {
+				popupWithImage.open(name, link);
+			} }, ".cards-template")
 		const cardElement = card.generateCard();
     cardList.addNewCard(cardElement);
 	}
@@ -103,6 +109,22 @@ const PopupAddCard = new PopupWithForm({
     cardAddingForm.reset();
 } */
 
+// редактирование профиля
+
+const userInfo = new UserInfo({ 
+	nameSelector: ".profile__name",
+	jobSelector: ".profile__job"});
+
+
+const popupEdit = new PopupWithForm({ 
+	popupSelector: ".popup_type_edit", 
+	closeButtonSelector: ".popup__close-icon", 
+	handleFormSubmit: (formData) => {
+	userInfo.setUserInfo(formData["nameInput"], formData["jobInput"])
+}
+}) 
+
+popupEdit.setEventListeners();
 /* function editFormHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
@@ -112,14 +134,15 @@ const PopupAddCard = new PopupWithForm({
 
 // СЛУШАТЕЛИ СОБЫТИЙ
 
-/* popupEditOpenButton.addEventListener("click", () => {
-    openPopup(popupEdit);
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
+popupEditOpenButton.addEventListener("click", () => {
+    popupEdit.open();
+	  const currentValues = userInfo.getUserInfo();
+    nameInput.value = currentValues.name;
+    jobInput.value = currentValues.job;
     // сброс валидации при новом открытии
     profileEditFormValidator.clearErrorsOnOpening(nameInput);
     profileEditFormValidator.clearErrorsOnOpening(jobInput);
-}); */
+}); 
 
 	popupAddCardOpenButton.addEventListener("click", () => {
     PopupAddCard.open();
