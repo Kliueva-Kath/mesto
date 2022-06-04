@@ -1,4 +1,5 @@
 import Popup from "./Popup.js";
+
 export default class PopupWithImage extends Popup {
     open(name, link) {
         const openedImage = document.querySelector(".image__close-up");

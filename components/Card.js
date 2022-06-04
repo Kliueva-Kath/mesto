@@ -1,5 +1,3 @@
-// import { openPopup, closePopup } from "../utils/utils.js";
-// import { imagePopup } from "../utils/constants.js";
 export default class Card {
     constructor({ name, link, handleCardClick }, cardSelector) {
         this._cardSelector = cardSelector;
@@ -44,17 +42,6 @@ export default class Card {
             .querySelector(".element__like")
             .classList.toggle("element__like_active");
     }
-
-    /*     // открытие попапа картинки
-                                    _handleOpenPopup() {
-                                        const openedImage = document.querySelector(".image__close-up");
-                                        const openedImageTitle = document.querySelector(".image__title");
-
-                                        openedImage.src = this._link;
-                                        openedImageTitle.textContent = this._name;
-                                        openedImage.alt = this._name;
-                                        openPopup(imagePopup);
-                                    } */
 
     // слушатели событий
 
