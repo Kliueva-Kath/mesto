@@ -1,8 +1,8 @@
 export default class Card {
-    constructor({ name, link, handleCardClick }, cardSelector) {
+    constructor(data, handleCardClick, cardSelector) {
         this._cardSelector = cardSelector;
-        this._name = name;
-        this._link = link;
+        this._name = data.name;
+        this._link = data.link;
         this._handleCardClick = handleCardClick;
     }
 
@@ -61,8 +61,10 @@ export default class Card {
             });
 
         // событие открытия попапа
-			  this._element.querySelector(".element__photo").addEventListener("click", () => {
-					this._handleCardClick(this._name, this._link)
-				})
+        this._element
+            .querySelector(".element__photo")
+            .addEventListener("click", () => {
+                this._handleCardClick(this._name, this._link);
+            });
     }
 }

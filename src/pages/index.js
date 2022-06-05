@@ -42,20 +42,32 @@ const popupWithImage = new PopupWithImage(
     ".popup__close-icon"
 );
 
+function createCard(item) {
+    const card = new Card(
+        item,
+        (name, link) => {
+            popupWithImage.open(name, link);
+        },
+        ".cards-template"
+    );
+    const cardElement = card.generateCard();
+    return cardElement;
+}
+
 const cardList = new Section({
         items: initialCards,
         renderer: (item) => {
-            const card = new Card({
-                    name: item.name,
-                    link: item.link,
-                    handleCardClick: (name, link) => {
-                        popupWithImage.open(name, link);
-                    },
-                },
-                ".cards-template"
-            );
-            const cardElement = card.generateCard();
-            cardList.addItem(cardElement);
+            /* const card = new Card({
+                                                                                      name: item.name,
+                                                                                      link: item.link,
+                                                                                      handleCardClick: (name, link) => {
+                                                                                          popupWithImage.open(name, link);
+                                                                                      },
+                                                                                  },
+                                                                                  ".cards-template"
+                                                                              );
+                                                                              const cardElement = card.generateCard(); */
+            cardList.addItem(createCard(item));
         },
     },
     cardListContainer
@@ -67,36 +79,37 @@ popupWithImage.setEventListeners();
 
 // форма добавления карточек
 
-const PopupAddCard = new PopupWithForm({
-    popupSelector: ".popup_type_add-card",
-    closeButtonSelector: ".popup__close-icon",
-    handleFormSubmit: (formData) => {
-        const card = new Card({
-                name: formData[(name = "placeInput")],
-                link: formData[(name = "urlInput")],
-                handleCardClick: (name, link) => {
-                    popupWithImage.open(name, link);
-                },
-            },
-            ".cards-template"
-        );
-        const cardElement = card.generateCard();
-        cardList.addNewCard(cardElement);
-    },
-});
+const PopupAddCard = new PopupWithForm(
+    ".popup_type_add-card",
+    ".popup__close-icon",
+    (formData) => {
+        /*         const card = new Card({
+                                            name: formData[(name = "placeInput")],
+                                            link: formData[(name = "urlInput")],
+                                            handleCardClick: (name, link) => {
+                                                popupWithImage.open(name, link);
+                                            },
+                                        },
+                                        ".cards-template"
+                                    );
+                                    const cardElement = card.generateCard(); */
+
+        cardList.addNewCard(createCard(formData));
+    }
+);
 PopupAddCard.setEventListeners();
 
 // редактирование профиля
 
 const userInfo = new UserInfo(".profile__name", ".profile__job");
 
-const popupEdit = new PopupWithForm({
-    popupSelector: ".popup_type_edit",
-    closeButtonSelector: ".popup__close-icon",
-    handleFormSubmit: (formData) => {
+const popupEdit = new PopupWithForm(
+    ".popup_type_edit",
+    ".popup__close-icon",
+    (formData) => {
         userInfo.setUserInfo(formData["nameInput"], formData["jobInput"]);
-    },
-});
+    }
+);
 
 popupEdit.setEventListeners();
 
