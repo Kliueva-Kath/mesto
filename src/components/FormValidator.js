@@ -51,8 +51,7 @@ export default class FormValidator {
 
     _toggleButtonState() {
             if (!this._form.checkValidity()) {
-                this._button.classList.add(this._inactiveButtonClass);
-                this._button.setAttribute("disabled", true);
+                this.disableButton();
             } else {
                 this._button.classList.remove(this._inactiveButtonClass);
                 this._button.removeAttribute("disabled", true);
@@ -65,7 +64,7 @@ export default class FormValidator {
             });
         }
         // вызывается в index.js при открытии попапов для сброса состояния кнопки
-    disableButtonOnOpening() {
+    disableButton() {
         this._button.classList.add(this._inactiveButtonClass);
         this._button.setAttribute("disabled", true);
     }

@@ -68,6 +68,7 @@ popupWithImage.setEventListeners();
 
 const PopupAddCard = new PopupWithForm(".popup_type_add-card", (formData) => {
     cardList.addNewCard(createCard(formData));
+    PopupAddCard.close();
 });
 PopupAddCard.setEventListeners();
 
@@ -77,6 +78,7 @@ const userInfo = new UserInfo(".profile__name", ".profile__job");
 
 const popupEdit = new PopupWithForm(".popup_type_edit", (formData) => {
     userInfo.setUserInfo(formData["nameInput"], formData["jobInput"]);
+    popupEdit.close();
 });
 
 popupEdit.setEventListeners();
@@ -95,6 +97,6 @@ popupEditOpenButton.addEventListener("click", () => {
 popupAddCardOpenButton.addEventListener("click", () => {
     PopupAddCard.open();
     // сброс валидации при новом открытии
-    cardAddingFormValidator.disableButtonOnOpening();
+    cardAddingFormValidator.disableButton();
     cardAddingFormValidator.clearErrorsOnOpening();
 });

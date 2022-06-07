@@ -36,6 +36,7 @@ export default class Card {
 
     _handleDeleteCard() {
         this._element.remove();
+        this._element = null;
     }
 
     _handleLikePost() {
