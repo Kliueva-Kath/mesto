@@ -18,7 +18,11 @@
 
             <section class="profile">
                 <div class="profile__account">
-                    <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="аватар пользователя" />
+                    <div class="profile__avatar">
+                        <button class="button profile__avatar-edit" type="button"></button>
+                    </div>
+
+                    <!-- <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="аватар пользователя" /> -->
                     <div class="profile__info">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <p class="profile__job">Исследователь океана</p>
