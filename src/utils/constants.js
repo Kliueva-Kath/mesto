@@ -5,6 +5,12 @@ export const profileEditForm = document.forms.profileEditForm;
 export const nameInput = profileEditForm.elements.nameInput;
 export const jobInput = profileEditForm.elements.jobInput;
 
+// форма изменения аватара
+
+export const popupChangeAvatarOpenButton = document.querySelector(
+    ".profile__avatar-edit"
+);
+
 // форма добавления карточки
 export const cardAddingForm = document.forms.addCardForm;
 export const placeInput = cardAddingForm.elements.placeInput;

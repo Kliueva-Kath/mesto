@@ -11,6 +11,7 @@ import UserInfo from "../components/UserInfo.js";
 import {
     nameInput,
     jobInput,
+    popupChangeAvatarOpenButton,
     // placeInput,
     // urlInput,
     popupAddCardOpenButton,
@@ -47,6 +48,12 @@ const cardAddingFormValidator = new FormValidator(
     document.forms.addCardForm
 );
 cardAddingFormValidator.enableValidation();
+
+const avatarChangeFormValidator = new FormValidator(
+    config,
+    document.forms.avatarChangeForm
+);
+avatarChangeFormValidator.enableValidation();
 
 // добавление карточек на страницу
 
@@ -87,23 +94,51 @@ PopupAddCard.setEventListeners();
 
 // редактирование профиля
 
-const userInfo = new UserInfo(".profile__name", ".profile__job");
+const userInfo = new UserInfo(
+    ".profile__name",
+    ".profile__job",
+    ".profile__avatar"
+);
 
 const popupEdit = new PopupWithForm(".popup_type_edit", (formData) => {
     api
         .editUserInfo(formData["nameInput"], formData["jobInput"])
         .then((res) => {
             userInfo.setUserInfo(res.name, res.about);
+            popupEdit.close();
         })
         .catch((err) => {
             console.log(err);
         });
-    popupEdit.close();
 });
 
 popupEdit.setEventListeners();
 
+// попап измения аватара
+const popupChangeAvatar = new PopupWithForm(
+    ".popup_type_change-avatar",
+    (formData) => {
+        api
+            .editAvatar(formData["avatarInput"])
+            .then((res) => {
+                userInfo.changeAvatar(res.avatar);
+                popupChangeAvatar.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+);
+
+popupChangeAvatar.setEventListeners();
+
 // СЛУШАТЕЛИ СОБЫТИЙ
+
+popupChangeAvatarOpenButton.addEventListener("click", () => {
+    popupChangeAvatar.open();
+    avatarChangeFormValidator.disableButton();
+    avatarChangeFormValidator.clearErrorsOnOpening();
+});
 
 popupEditOpenButton.addEventListener("click", () => {
     popupEdit.open();
@@ -128,8 +163,7 @@ api
     .then((userInfo) => {
         userName.textContent = userInfo.name;
         userJob.textContent = userInfo.about;
-        userAvatar.style.backgroundImage =
-            "url('https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg')";
+        userAvatar.style.backgroundImage = `url(${userInfo.avatar})`;
     })
     .catch((err) => {
         console.log(err);
