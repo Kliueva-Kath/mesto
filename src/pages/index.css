@@ -26,6 +26,7 @@
 @import url("../blocks/profile/profile.css");
 @import url("../blocks/profile/__account/profile__account.css");
 @import url("../blocks/profile/__avatar/profile__avatar.css");
+@import url("../blocks/profile/__avatar-edit/profile__avatar-edit.css");
 @import url("../blocks/profile/__info/profile__info.css");
 @import url("../blocks/profile/__name/profile__name.css");
 @import url("../blocks/profile/__job/profile__job.css");
@@ -42,6 +43,7 @@
 @import url("../blocks/element/__bttm-pannel/element__bttm-panel.css");
 @import url("../blocks/element/__title/element__title.css");
 @import url("../blocks/element/__like/element__like.css");
+@import url("../blocks/element/__likes-count/element__likes-count.css");
 @import url("../blocks/element/__like/_active/element__like_active.css");
 
 /*блок footer*/
@@ -57,6 +59,8 @@
 @import url("../blocks/popup/_opened/popup_opened.css");
 @import url("../blocks/popup/__close-icon/popup__close-icon.css");
 @import url("../blocks/popup/__header/popup__header.css");
+@import url("../blocks/popup/__header/_type/_form/popup__header_type_form.css");
+@import url("../blocks/popup/__header/_type/_no-form/popup__header_type_no-form.css");
 
 /* форма попапа */
 

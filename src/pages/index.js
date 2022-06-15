@@ -6,6 +6,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/API.js";
 
 import {
     nameInput,
@@ -99,4 +100,12 @@ popupAddCardOpenButton.addEventListener("click", () => {
     // сброс валидации при новом открытии
     cardAddingFormValidator.disableButton();
     cardAddingFormValidator.clearErrorsOnOpening();
+});
+
+const api = new Api({
+    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-43",
+    headers: {
+        "content-type": "application/json",
+        authorization: "dec93d61-0cc9-4efe-ab10-1321bb5cdf78",
+    },
 });
