@@ -12,23 +12,23 @@ export const urlInput = cardAddingForm.elements.urlInput;
 
 // кнопки открытия попапов с формами
 export const popupAddCardOpenButton = document.querySelector(
-  ".profile__add-button"
+    ".profile__add-button"
 );
 export const popupEditOpenButton = document.querySelector(
-  ".profile__edit-button"
+    ".profile__edit-button"
 );
 
 // данные для валидации форм
 export const config = {
-  inputSelector: ".form__input",
-  buttonSelector: ".form__save-button",
-  inactiveButtonClass: "form__save-button_inactive",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_visible"
+    inputSelector: ".form__input",
+    buttonSelector: ".form__save-button",
+    inactiveButtonClass: "form__save-button_inactive",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__input-error_visible",
 };
 
 // изначальные карточки
-export const initialCards = [
+/* export const initialCards = [
   {
     name: "Байкал",
     link:
@@ -59,7 +59,7 @@ export const initialCards = [
     link:
       "https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=433&q=80"
   }
-];
+]; */
 
 export const cardListContainer = ".elements__container";
 
