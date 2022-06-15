@@ -66,3 +66,4 @@ export const cardListContainer = ".elements__container";
 // поля с данными пользователя
 export const userName = document.querySelector(".profile__name");
 export const userJob = document.querySelector(".profile__job");
+export const userAvatar = document.querySelector(".profile__avatar");

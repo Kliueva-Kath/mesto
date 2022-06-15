@@ -19,7 +19,8 @@ import {
   initialCards,
   cardListContainer,
   userName,
-  userJob
+  userJob,
+  userAvatar
 } from "../utils/constants.js";
 
 // экземпляр класса Api для запросов
@@ -117,4 +118,6 @@ popupAddCardOpenButton.addEventListener("click", () => {
 api.getUserInfo().then((userInfo) => {
   userName.textContent = userInfo.name;
   userJob.textContent = userInfo.about;
+  userAvatar.style.backgroundImage =
+    "url('https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg')";
 });
