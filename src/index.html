@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-</head>
+  </head>
 
-<body class="body">
+  <body class="body">
     <div class="page">
-        <header class="header">
-            <img class="header__logo" src="<%=require('./images/header__logo.svg')%>" alt="логотип сайта" />
-        </header>
-        <main class="content">
-            <!-- секция profile -->
+      <header class="header">
+        <img
+          class="header__logo"
+          src="<%=require('./images/header__logo.svg')%>"
+          alt="логотип сайта"
+        />
+      </header>
+      <main class="content">
+        <!-- секция profile -->
 
-            <section class="profile">
-                <div class="profile__account">
-                    <div class="profile__avatar">
-                        <button class="button profile__avatar-edit" type="button"></button>
-                    </div>
+        <section class="profile">
+          <div class="profile__account">
+            <div class="profile__avatar">
+              <button
+                class="button profile__avatar-edit"
+                type="button"
+              ></button>
+            </div>
 
-                    <!-- <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="аватар пользователя" /> -->
-                    <div class="profile__info">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <p class="profile__job">Исследователь океана</p>
-                        <button class="button profile__edit-button" type="button"></button>
-                    </div>
-                </div>
-                <button class="button profile__add-button" type="button"></button>
-            </section>
+            <!-- <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="аватар пользователя" /> -->
+            <div class="profile__info">
+              <h1 class="profile__name"></h1>
+              <p class="profile__job"></p>
+              <button
+                class="button profile__edit-button"
+                type="button"
+              ></button>
+            </div>
+          </div>
+          <button class="button profile__add-button" type="button"></button>
+        </section>
 
-            <!-- секция elements -->
-            <section class="elements">
-                <ul class="elements__container">
-                    <!-- template для карточек -->
-                    <template class="cards-template">
+        <!-- секция elements -->
+        <section class="elements">
+          <ul class="elements__container">
+            <!-- template для карточек -->
+            <template class="cards-template">
               <li class="element">
                 <button
                   class="button element__delete-button"
@@ -52,81 +61,121 @@
                 </div>
               </li>
             </template>
-                </ul>
-            </section>
-        </main>
-        <footer class="footer">
-            <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
-        </footer>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+      </footer>
 
-        <!-- Попап редактирования -->
-        <div class="popup popup_type_edit">
-            <div class="popup__container">
-                <h2 class="popup__header popup__header_type_form">
-                    Редактировать профиль
-                </h2>
-                <form class="form" name="profileEditForm" novalidate>
-                    <input type="text" class="form__input" id="name-input" name="nameInput" placeholder="Имя" minlength="2" maxlength="40" required />
-                    <span class="form__input-error name-input-error"></span>
-                    <input type="text" class="form__input" id="job-input" name="jobInput" placeholder="О себе" minlength="2" maxlength="200" required />
-                    <span class="form__input-error job-input-error"></span>
-                    <button class="button form__save-button" type="submit">
+      <!-- Попап редактирования -->
+      <div class="popup popup_type_edit">
+        <div class="popup__container">
+          <h2 class="popup__header popup__header_type_form">
+            Редактировать профиль
+          </h2>
+          <form class="form" name="profileEditForm" novalidate>
+            <input
+              type="text"
+              class="form__input"
+              id="name-input"
+              name="nameInput"
+              placeholder="Имя"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="form__input-error name-input-error"></span>
+            <input
+              type="text"
+              class="form__input"
+              id="job-input"
+              name="jobInput"
+              placeholder="О себе"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="form__input-error job-input-error"></span>
+            <button class="button form__save-button" type="submit">
               Сохранить
             </button>
-                </form>
-                <button class="button popup__close-icon" type="button"></button>
-            </div>
+          </form>
+          <button class="button popup__close-icon" type="button"></button>
         </div>
+      </div>
 
-        <!-- Попап смены аватара -->
-        <div class="popup popup_type_change-avatar">
-            <div class="popup__container">
-                <h2 class="popup__header popup__header_type_form">Обновить аватар</h2>
-                <form class="form" name="changeAvatarForm" novalidate>
-                    <input type="url" class="form__input" id="avatar-url-input" name="avatar" placeholder="Ссылка на фото" required />
-                    <span class="form__input-error avatar-url-input-error"></span>
-                    <button class="button form__save-button" type="submit">
+      <!-- Попап смены аватара -->
+      <div class="popup popup_type_change-avatar">
+        <div class="popup__container">
+          <h2 class="popup__header popup__header_type_form">Обновить аватар</h2>
+          <form class="form" name="changeAvatarForm" novalidate>
+            <input
+              type="url"
+              class="form__input"
+              id="avatar-url-input"
+              name="avatar"
+              placeholder="Ссылка на фото"
+              required
+            />
+            <span class="form__input-error avatar-url-input-error"></span>
+            <button class="button form__save-button" type="submit">
               Сохранить
             </button>
-                </form>
-                <button class="button popup__close-icon" type="button"></button>
-            </div>
+          </form>
+          <button class="button popup__close-icon" type="button"></button>
         </div>
+      </div>
 
-        <!-- Попап добавления карточки -->
-        <div class="popup popup_type_add-card">
-            <div class="popup__container">
-                <h2 class="popup__header popup__header_type_form">Новое место</h2>
-                <form class="form" name="addCardForm" novalidate>
-                    <input type="text" class="form__input" id="place-input" name="name" placeholder="Название" minlength="2" maxlength="30" required />
-                    <span class="form__input-error place-input-error"></span>
-                    <input type="url" class="form__input" id="url-input" name="link" placeholder="Ссылка на картинку" required />
-                    <span class="form__input-error url-input-error"></span>
-                    <button class="button form__save-button" type="submit">
+      <!-- Попап добавления карточки -->
+      <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <h2 class="popup__header popup__header_type_form">Новое место</h2>
+          <form class="form" name="addCardForm" novalidate>
+            <input
+              type="text"
+              class="form__input"
+              id="place-input"
+              name="name"
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="form__input-error place-input-error"></span>
+            <input
+              type="url"
+              class="form__input"
+              id="url-input"
+              name="link"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="form__input-error url-input-error"></span>
+            <button class="button form__save-button" type="submit">
               Создать
             </button>
-                </form>
-                <button class="button popup__close-icon" type="button"></button>
-            </div>
+          </form>
+          <button class="button popup__close-icon" type="button"></button>
         </div>
-        <!-- Попап просмотра картинки -->
-        <div class="popup popup_type_image">
-            <div class="image">
-                <img class="image__close-up" />
-                <h2 class="image__title"></h2>
-                <button class="button popup__close-icon" type="button"></button>
-            </div>
+      </div>
+      <!-- Попап просмотра картинки -->
+      <div class="popup popup_type_image">
+        <div class="image">
+          <img class="image__close-up" />
+          <h2 class="image__title"></h2>
+          <button class="button popup__close-icon" type="button"></button>
         </div>
+      </div>
 
-        <!-- попап подтверждения удаления карточки -->
-        <div class="popup popup_type_delete-card">
-            <div class="popup__container">
-                <h2 class="popup__header popup__header_type_no-form">Вы уверены?</h2>
-                <button class="button popup__confirm-button" type="submit">Да</button>
-                <button class="button popup__close-icon" type="button"></button>
-            </div>
+      <!-- попап подтверждения удаления карточки -->
+      <div class="popup popup_type_delete-card">
+        <div class="popup__container">
+          <h2 class="popup__header popup__header_type_no-form">Вы уверены?</h2>
+          <button class="button popup__confirm-button" type="submit">Да</button>
+          <button class="button popup__close-icon" type="button"></button>
         </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
