@@ -90,7 +90,14 @@ PopupAddCard.setEventListeners();
 const userInfo = new UserInfo(".profile__name", ".profile__job");
 
 const popupEdit = new PopupWithForm(".popup_type_edit", (formData) => {
-    userInfo.setUserInfo(formData["nameInput"], formData["jobInput"]);
+    api
+        .editUserInfo(formData["nameInput"], formData["jobInput"])
+        .then((res) => {
+            userInfo.setUserInfo(res.name, res.about);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     popupEdit.close();
 });
 
