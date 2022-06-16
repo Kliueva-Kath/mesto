@@ -5,6 +5,12 @@ export const profileEditForm = document.forms.profileEditForm;
 export const nameInput = profileEditForm.elements.nameInput;
 export const jobInput = profileEditForm.elements.jobInput;
 
+// форма изменения аватара
+
+export const popupChangeAvatarOpenButton = document.querySelector(
+  ".profile__avatar-edit"
+);
+
 // форма добавления карточки
 export const cardAddingForm = document.forms.addCardForm;
 export const placeInput = cardAddingForm.elements.placeInput;
@@ -28,7 +34,7 @@ export const config = {
 };
 
 // изначальные карточки
-export const initialCards = [
+/* export const initialCards = [
   {
     name: "Байкал",
     link:
@@ -59,7 +65,7 @@ export const initialCards = [
     link:
       "https://images.unsplash.com/photo-1563941433-b6a094653ed2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=433&q=80"
   }
-];
+]; */
 
 export const cardListContainer = ".elements__container";
 

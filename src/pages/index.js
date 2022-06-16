@@ -6,17 +6,19 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 
 import {
   nameInput,
   jobInput,
+  popupChangeAvatarOpenButton,
   // placeInput,
   // urlInput,
   popupAddCardOpenButton,
   popupEditOpenButton,
   config,
-  initialCards,
+  // initialCards,
   cardListContainer,
   userName,
   userJob,
@@ -48,15 +50,23 @@ const cardAddingFormValidator = new FormValidator(
 );
 cardAddingFormValidator.enableValidation();
 
+const avatarChangeFormValidator = new FormValidator(
+  config,
+  document.forms.avatarChangeForm
+);
+avatarChangeFormValidator.enableValidation();
+
 // добавление карточек на страницу
 
 const popupWithImage = new PopupWithImage(".popup_type_image");
 
 function createCard(item) {
   const card = new Card(
-    item,
-    (name, link) => {
-      popupWithImage.open(name, link);
+    {
+      data: item,
+      handleCardClick: (name, link) => {
+        popupWithImage.open(name, link);
+      }
     },
     ".cards-template"
   );
@@ -64,17 +74,15 @@ function createCard(item) {
   return cardElement;
 }
 
-const cardList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      cardList.addItem(createCard(item));
-    }
-  },
-  cardListContainer
-);
-
-cardList.renderItems();
+/* const cardList = new Section({
+        items: initialCards,
+        renderer: (item) => {
+            cardList.addItem(createCard(item));
+        },
+    },
+    cardListContainer
+); 
+cardList.renderItems(); */
 
 popupWithImage.setEventListeners();
 
@@ -88,16 +96,52 @@ PopupAddCard.setEventListeners();
 
 // редактирование профиля
 
-const userInfo = new UserInfo(".profile__name", ".profile__job");
+const userInfo = new UserInfo(
+  ".profile__name",
+  ".profile__job",
+  ".profile__avatar"
+);
 
 const popupEdit = new PopupWithForm(".popup_type_edit", (formData) => {
-  userInfo.setUserInfo(formData["nameInput"], formData["jobInput"]);
-  popupEdit.close();
+  api
+    .editUserInfo(formData["nameInput"], formData["jobInput"])
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about);
+      popupEdit.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 popupEdit.setEventListeners();
 
+// попап измения аватара
+const popupChangeAvatar = new PopupWithForm(
+  ".popup_type_change-avatar",
+  (formData) => {
+    api
+      .editAvatar(formData["avatarInput"])
+      .then((res) => {
+        userInfo.changeAvatar(res.avatar);
+        popupChangeAvatar.close();
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(formData["avatarInput"]);
+      });
+  }
+);
+
+popupChangeAvatar.setEventListeners();
+
 // СЛУШАТЕЛИ СОБЫТИЙ
+
+popupChangeAvatarOpenButton.addEventListener("click", () => {
+  popupChangeAvatar.open();
+  avatarChangeFormValidator.disableButton();
+  avatarChangeFormValidator.clearErrorsOnOpening();
+});
 
 popupEditOpenButton.addEventListener("click", () => {
   popupEdit.open();
@@ -115,9 +159,35 @@ popupAddCardOpenButton.addEventListener("click", () => {
   cardAddingFormValidator.clearErrorsOnOpening();
 });
 
-api.getUserInfo().then((userInfo) => {
-  userName.textContent = userInfo.name;
-  userJob.textContent = userInfo.about;
-  userAvatar.style.backgroundImage =
-    "url('https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg')";
-});
+// соединение инфо о пользователе с сервером
+
+api
+  .getUserInfo()
+  .then((userInfo) => {
+    userName.textContent = userInfo.name;
+    userJob.textContent = userInfo.about;
+    userAvatar.style.backgroundImage = `url(${userInfo.avatar})`;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// загрузка изначальных карточек
+api
+  .getInitialCards()
+  .then((cards) => {
+    const cardList = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          cardList.addItem(createCard(item));
+        }
+      },
+      cardListContainer
+    );
+
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
