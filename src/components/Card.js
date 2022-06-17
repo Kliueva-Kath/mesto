@@ -1,14 +1,23 @@
 export default class Card {
   constructor(
-    { data, handleCardClick, handleDeleteCard, handleLike },
+    {
+      data,
+      handleCardClick,
+      handleDeleteCard,
+      handleAddLike,
+      handleDeleteLike
+    },
     cardSelector
   ) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link;
+    this._ownerId = data.owner._id;
+    this._likeCounter = data.likes;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
-    this._handleLike = handleLike;
+    this._handleAddLike = handleAddLike;
+    this._handleDeleteLike = handleDeleteLike;
   }
 
   // получение разметки template-элемента и вставка данных в разметку
@@ -40,15 +49,22 @@ export default class Card {
   // удаление карточки
 
   handleDeleteCard() {
+    this._deleteCard(this._element);
+  }
+
+  _deleteCard() {
     this._element.remove();
     this._element = null;
   }
 
-  handleLike() {
-    this._likeButton.classList.toggle("element__like_active");
+  addLike() {
+    this._likeButton.classList.add("element__like_active");
+    this._likeCounter = 
   }
 
-  getOwnerId(ownerId) {}
+  deleteLike() {}
+
+  checkOwner(ownerId) {}
 
   // слушатели событий
 

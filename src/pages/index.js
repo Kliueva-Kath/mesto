@@ -18,8 +18,6 @@ import {
   popupAddCardOpenButton,
   popupEditOpenButton,
   config,
-  // initialCards,
-  cardListContainer,
   userName,
   userJob,
   userAvatar
@@ -60,6 +58,7 @@ avatarChangeFormValidator.enableValidation();
 
 const popupWithImage = new PopupWithImage(".popup_type_image");
 
+// функция создания карточки
 function createCard(item) {
   const card = new Card(
     {
@@ -74,15 +73,14 @@ function createCard(item) {
   return cardElement;
 }
 
-/* const cardList = new Section({
-        items: initialCards,
-        renderer: (item) => {
-            cardList.addItem(createCard(item));
-        },
-    },
-    cardListContainer
-); 
-cardList.renderItems(); */
+const cardList = new Section(
+  {
+    renderer: (item) => {
+      cardList.addItem(createCard(item));
+    }
+  },
+  ".elements__container"
+);
 
 popupWithImage.setEventListeners();
 
@@ -176,17 +174,7 @@ api
 api
   .getInitialCards()
   .then((cards) => {
-    const cardList = new Section(
-      {
-        items: cards,
-        renderer: (item) => {
-          cardList.addItem(createCard(item));
-        }
-      },
-      cardListContainer
-    );
-
-    cardList.renderItems();
+    cardList.renderItems(cards);
   })
   .catch((err) => {
     console.log(err);
