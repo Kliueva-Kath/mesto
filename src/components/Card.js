@@ -13,11 +13,12 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._ownerId = data.owner._id;
-    this._likeCounter = data.likes;
+    this._likeCounter = [];
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleAddLike = handleAddLike;
     this._handleDeleteLike = handleDeleteLike;
+    this._deleteButton = this._element.querySelector(".element__delete-button");
   }
 
   // получение разметки template-элемента и вставка данных в разметку
@@ -49,37 +50,43 @@ export default class Card {
   // удаление карточки
 
   handleDeleteCard() {
-    this._deleteCard(this._element);
-  }
-
-  _deleteCard() {
     this._element.remove();
     this._element = null;
   }
 
-  addLike() {
-    this._likeButton.classList.add("element__like_active");
-    this._likeCounter = 
+  setLikeCounter(data) {
+    this._likeCounter = data.likes.length;
   }
 
-  deleteLike() {}
+  _handleAddLike() {
+    this._likeButton.classList.add("element__like_active");
+  }
 
-  checkOwner(ownerId) {}
+  _handleDeleteLike() {
+    this._likeButton.classList.remove("element__like_active");
+  }
+
+  checkOwner(ownerId, data) {
+    if (ownerId === data.owner._id) {
+    }
+  }
 
   // слушатели событий
 
   _setEventListeners() {
     // событие удаления карточки
-    this._element
-      .querySelector(".element__delete-button")
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
+    this._deleteButton.addEventListener("click", () => {
+      this._handleDeleteCard();
+    });
 
     // событие лайка
 
     this._likeButton.addEventListener("click", () => {
-      this._handleLike();
+      if (this._likebutton.classList.contains("element__like_active")) {
+        this._handleAddLike();
+      } else {
+        this._handleDeleteLike();
+      }
     });
 
     // событие открытия попапа
