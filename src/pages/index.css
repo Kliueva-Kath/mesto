@@ -39,6 +39,7 @@
 @import url("../blocks/elements/__container/elements__container.css");
 @import url("../blocks/element/element.css");
 @import url("../blocks/element/__delete-button/element__delete-button.css");
+@import url("../blocks/element/__delete-button/_visible/element__delete-button_visible.css");
 @import url("../blocks/element/__photo/element__photo.css");
 @import url("../blocks/element/__bttm-pannel/element__bttm-panel.css");
 @import url("../blocks/element/__title/element__title.css");
