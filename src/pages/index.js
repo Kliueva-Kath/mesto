@@ -63,11 +63,15 @@ const popupWithConfirmation = new PopupWithConfirmation(
 );
 popupWithConfirmation.setEventListeners();
 
+Promise.all([api.getUserInfo(), api.getCards()]).then(
+    (userInfo, CardData) => {}
+);
+
 // функция создания карточки
 function createCard(item, userId) {
     const card = new Card({
             data: item,
-            ownerId: getUserId(),
+            ownerId: userId,
             handleCardClick: (name, link) => {
                 popupWithImage.open(name, link);
             },
@@ -81,15 +85,10 @@ function createCard(item, userId) {
                 });
             },
             handleLikeClick: () => {
-                if (!card.isLiked()) {
-                    api.addLike(card.getId()).then((likes) => {
-                        card.addLike(likes);
-                    });
-                } else {
-                    api.deleteLike(card.getId()).then((likes) => {
-                        card.addLike(likes);
-                    });
-                }
+                api.setLike(card.getId(), card.isLiked()).then((res) => {
+                    card.setLikesCounter(res.likes);
+                    card.likes = res.likes;
+                });
             },
         },
         ".cards-template"
@@ -111,8 +110,15 @@ popupWithImage.setEventListeners();
 // форма добавления карточек
 
 const PopupAddCard = new PopupWithForm(".popup_type_add-card", (formData) => {
-    cardList.addNewCard(createCard(formData));
-    PopupAddCard.close();
+    api
+        .addCard(formData.name, formData.link)
+        .then((cardInfo) => {
+            cardList.addNewCard(createCard(cardInfo));
+            PopupAddCard.close();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 PopupAddCard.setEventListeners();
 

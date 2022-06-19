@@ -75,9 +75,9 @@ export default class Api {
         });
     }
 
-    addLike(cardId) {
+    setLike(cardId, isLiked) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: "PUT",
+            method: isLiked ? "DELETE" : "PUT",
             headers: this._headers,
         }).then((res) => {
             if (res.ok) {
@@ -87,20 +87,32 @@ export default class Api {
         });
     }
 
-    deleteLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: "DELETE",
-            headers: this._headers,
-        }).then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        });
-    }
+    /*  addLike(cardId) {
+          return fetch(`${this._url}/cards/${cardId}/likes`, {
+              method: "PUT",
+              headers: this._headers,
+          }).then((res) => {
+              if (res.ok) {
+                  return res.json();
+              }
+              return Promise.reject(`Ошибка: ${res.status}`);
+          });
+      }
+
+      deleteLike(cardId) {
+          return fetch(`${this._url}/cards/${cardId}/likes`, {
+              method: "DELETE",
+              headers: this._headers,
+          }).then((res) => {
+              if (res.ok) {
+                  return res.json();
+              }
+              return Promise.reject(`Ошибка: ${res.status}`);
+          });
+      } */
 
     deleteCard(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
+        return fetch(`${this._url}/cards/${cardId}`, {
             method: "DELETE",
             headers: this._headers,
         }).then((res) => {
@@ -112,6 +124,6 @@ export default class Api {
     }
 
     /*     renderItems() {
-              return Promise.all([this.getUserInfo(), this.getCards()]);
-          } */
+                      return Promise.all([this.getUserInfo(), this.getCards()]);
+                  } */
 }

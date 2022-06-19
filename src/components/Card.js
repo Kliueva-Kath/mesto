@@ -39,9 +39,11 @@ export default class Card {
         this._photo.src = this._link;
         this._element.querySelector(".element__title").textContent = this._name;
         this._photo.alt = this._name;
-        this._showDeleteButton;
-        this._likeCounter.textContent = this._likes.length;
-
+        this._showDeleteButton();
+        this.setLikesCounter(this._likes);
+        if (this.isLiked()) {
+            this._likeButton.classList.add("element__like_active");
+        }
         this._setEventListeners();
         return this._element;
     }
@@ -57,13 +59,21 @@ export default class Card {
         this._element = null;
     }
 
-    addLike(likes) {
-        this._likeButton.classList.add("element__like_active");
+    setLikesCounter(likes) {
+        this._likeCounter = this._element.querySelector(".element__likes-count");
         this._likeCounter.textContent = likes.length;
     }
-    deleteLike(likes) {
-        this._likeButton.classList.remove("element__like_active");
-        this._likeCounter.textContent = likes.length;
+
+    /* addLike(likes) {
+                      this._likeButton.classList.add("element__like_active");
+                  }
+                  deleteLike(likes) {
+                      this._likeButton.classList.remove("element__like_active");
+                  } */
+
+    setLike() {
+        this._likeButton.classList.toggle("element__like_active");
+        this._handleLikeClick(this);
     }
 
     isLiked() {
@@ -92,7 +102,7 @@ export default class Card {
         // событие лайка
 
         this._likeButton.addEventListener("click", () => {
-            this._handleLikeClick();
+            this.setLike();
         });
 
         // событие открытия попапа
