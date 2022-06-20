@@ -74,10 +74,6 @@ export default class Card {
         this.setLikesCounter(likes);
     }
 
-    /*     setLike() {
-                                            this._likeButton.classList.toggle("element__like_active");
-                                        } */
-
     isLiked() {
         return this.likes.find((like) => like._id === this._ownerId);
     }
@@ -102,6 +98,4 @@ export default class Card {
             this._handleCardClick(this._name, this._link);
         });
     }
-
-    // создание карточки
 }
