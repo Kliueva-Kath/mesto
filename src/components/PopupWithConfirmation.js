@@ -1,5 +1,6 @@
 import Popup from "./Popup.js";
 
+// попап подтверждения удаления карточки
 export default class PopupWithConfirmation extends Popup {
     setEventListeners() {
         this._form = this._popup.querySelector(".form");
@@ -14,6 +15,7 @@ export default class PopupWithConfirmation extends Popup {
         this._handleFormSubmit = deleteFunction;
     }
 
+    // отображение текста "Сохранение..." при сабмите
     renderLoading(text) {
         this._form.querySelector(".form__save-button").textContent = text;
     }

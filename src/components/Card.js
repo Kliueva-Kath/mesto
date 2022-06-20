@@ -40,55 +40,57 @@ export default class Card {
         this._element.querySelector(".element__title").textContent = this._name;
         this._photo.alt = this._name;
         if (this._ownerId === this._cardOwnerId) {
-            this._deleteButton.classList.add(".element__delete-button_visible");
+            this._deleteButton.classList.add("element__delete-button_visible");
         }
         this.setLikesCounter(this.likes);
         this._setEventListeners();
         return this._element;
     }
 
-    // удаление карточки
-
+    // получение id карточки
     getId() {
         return this._id;
     }
 
+    // метод удаления карточки, передаваемый в коллбэк
     deleteCard() {
         this._element.remove();
         this._element = null;
     }
 
+    // установка счетчика лайков
     setLikesCounter(likes) {
         this._likeCounter = this._element.querySelector(".element__likes-count");
         this._likeCounter.textContent = likes.length;
     }
 
+    //метод добавления лайка
     addLike(likes) {
         this._likeButton.classList.add("element__like_active");
         this.isLiked(true);
         this.setLikesCounter(likes);
     }
+
+    // метод удаления лайка
     deleteLike(likes) {
         this._likeButton.classList.remove("element__like_active");
         this.isLiked(false);
         this.setLikesCounter(likes);
     }
 
+    // проверка наличия лайка
     isLiked() {
         return this.likes.find((like) => like._id === this._ownerId);
     }
 
     // слушатели событий
-
     _setEventListeners() {
         // событие удаления карточки
-
         this._deleteButton.addEventListener("click", () => {
             this._handleDeleteCard(this);
         });
 
         // событие лайка
-
         this._likeButton.addEventListener("click", () => {
             this._handleLikeClick(this);
         });

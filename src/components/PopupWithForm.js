@@ -32,6 +32,7 @@ export default class PopupWithForm extends Popup {
         this._form.reset();
     }
 
+    // отображение текста "Сохранение..." при сабмите
     renderLoading(text) {
         this._form.querySelector(".form__save-button").textContent = text;
     }

@@ -52,17 +52,20 @@ const avatarChangeFormValidator = new FormValidator(
 );
 avatarChangeFormValidator.enableValidation();
 
-// добавление карточек на страницу
-
+// попап просмотра изображений
 const popupWithImage = new PopupWithImage(".popup_type_image");
+popupWithImage.setEventListeners();
 
+// попап подтверждения удаления карточки
 const popupWithConfirmation = new PopupWithConfirmation(
     ".popup_type_delete-card"
 );
 popupWithConfirmation.setEventListeners();
 
+// переменная со значением id нашего пользователя
 let userId;
 
+// правило, чтобы карточки не прогружались раньше получения данных о пользователе
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([userInfo, cardData]) => {
         userName.textContent = userInfo.name;
@@ -119,8 +122,6 @@ const cardList = new Section({
     },
     ".elements__container"
 );
-
-popupWithImage.setEventListeners();
 
 // форма добавления карточек
 
