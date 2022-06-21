@@ -9,7 +9,7 @@ export default class Card {
         this._link = data.link;
         this._cardOwnerId = data.owner._id;
         this._ownerId = ownerId;
-        this.likes = data.likes;
+        this._likes = data.likes;
         this._handleCardClick = handleCardClick;
         this._handleDeleteCard = handleDeleteCard;
         this._handleLikeClick = handleLikeClick;
@@ -42,7 +42,7 @@ export default class Card {
         if (this._ownerId === this._cardOwnerId) {
             this._deleteButton.classList.add("element__delete-button_visible");
         }
-        this.setLikesCounter(this.likes);
+        this.setLikesCounter(this._likes);
         this._setEventListeners();
         return this._element;
     }
@@ -68,6 +68,7 @@ export default class Card {
         this._likeButton.classList.add("element__like_active");
         this.isLiked(true);
         this.setLikesCounter(likes);
+        this._likes = likes;
     }
 
     // метод удаления лайка
@@ -75,11 +76,12 @@ export default class Card {
         this._likeButton.classList.remove("element__like_active");
         this.isLiked(false);
         this.setLikesCounter(likes);
+        this._likes = likes;
     }
 
     // проверка наличия лайка
     isLiked() {
-        return this.likes.find((like) => like._id === this._ownerId);
+        return this._likes.find((like) => like._id === this._ownerId);
     }
 
     // слушатели событий

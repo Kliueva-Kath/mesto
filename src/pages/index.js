@@ -89,23 +89,36 @@ function createCard(item, userId) {
             handleDeleteCard: () => {
                 popupWithConfirmation.open();
                 popupWithConfirmation.handleDeleteCard(() => {
-                    api.deleteCard(card.getId()).then(() => {
-                        card.deleteCard();
-                        popupWithConfirmation.close();
-                    });
+                    api
+                        .deleteCard(card.getId())
+                        .then(() => {
+                            card.deleteCard();
+                            popupWithConfirmation.close();
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 });
             },
             handleLikeClick: () => {
                 if (card.isLiked()) {
-                    api.deleteLike(card.getId()).then((res) => {
-                        card.deleteLike(res.likes);
-                        card.likes = res.likes;
-                    });
+                    api
+                        .deleteLike(card.getId())
+                        .then((res) => {
+                            card.deleteLike(res.likes);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 } else {
-                    api.addLike(card.getId()).then((res) => {
-                        card.addLike(res.likes);
-                        card.likes = res.likes;
-                    });
+                    api
+                        .addLike(card.getId())
+                        .then((res) => {
+                            card.addLike(res.likes);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 }
             },
         },
@@ -155,7 +168,12 @@ const popupEdit = new PopupWithForm(".popup_type_edit", (formData) => {
     api
         .editUserInfo(formData["nameInput"], formData["jobInput"])
         .then((res) => {
-            userInfo.setUserInfo(res.name, res.about);
+            userInfo.setUserInfo({
+                name: res.name,
+                job: res.about,
+                avatar: res.avatar,
+                _id: res._id,
+            });
             popupEdit.close();
         })
         .catch((err) => {
@@ -204,6 +222,7 @@ popupEditOpenButton.addEventListener("click", () => {
     const currentInfo = userInfo.getUserInfo();
     nameInput.value = currentInfo.name;
     jobInput.value = currentInfo.job;
+    userAvatar.style.backgroundImage = currentInfo.avatar;
     // сброс валидации при новом открытии
     profileEditFormValidator.clearErrors();
 });
