@@ -33,6 +33,7 @@ export default class Card {
         if (this.isLiked()) {
             this._likeButton.classList.add("element__like_active");
         }
+        this._likeCounter = this._element.querySelector(".element__likes-count");
         this._photo = this._element.querySelector(".element__photo");
         this._deleteButton = this._element.querySelector(".element__delete-button");
         this._photo.src = this._link;
@@ -59,7 +60,6 @@ export default class Card {
 
     // установка счетчика лайков
     setLikesCounter(likes) {
-        this._likeCounter = this._element.querySelector(".element__likes-count");
         this._likeCounter.textContent = likes.length;
     }
 
