@@ -3,11 +3,11 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
     constructor(popupSelector, handleFormSubmit) {
         super(popupSelector);
+        this._inputList = this._popup.querySelectorAll(".form__input");
         this._handleFormSubmit = handleFormSubmit;
     }
 
     _getInputValues() {
-        this._inputList = this._popup.querySelectorAll(".form__input");
         // создаём пустой объект
         this._formValues = {};
         // добавляем в этот объект значения всех полей
@@ -20,6 +20,7 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         this._form = this._popup.querySelector(".form");
+        this._submitButton = this._form.querySelector(".form__save-button");
         this._form.addEventListener("submit", (evt) => {
             evt.preventDefault();
             this._handleFormSubmit(this._getInputValues());
@@ -34,6 +35,6 @@ export default class PopupWithForm extends Popup {
 
     // отображение текста "Сохранение..." при сабмите
     renderLoading(text) {
-        this._form.querySelector(".form__save-button").textContent = text;
+        this._submitButton.textContent = text;
     }
 }

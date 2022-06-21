@@ -196,7 +196,7 @@ popupChangeAvatar.setEventListeners();
 popupChangeAvatarOpenButton.addEventListener("click", () => {
     popupChangeAvatar.open();
     avatarChangeFormValidator.disableButton();
-    avatarChangeFormValidator.clearErrorsOnOpening();
+    avatarChangeFormValidator.clearErrors();
 });
 
 popupEditOpenButton.addEventListener("click", () => {
@@ -205,12 +205,12 @@ popupEditOpenButton.addEventListener("click", () => {
     nameInput.value = currentInfo.name;
     jobInput.value = currentInfo.job;
     // сброс валидации при новом открытии
-    profileEditFormValidator.clearErrorsOnOpening();
+    profileEditFormValidator.clearErrors();
 });
 
 popupAddCardOpenButton.addEventListener("click", () => {
     popupAddCard.open();
     // сброс валидации при новом открытии
     cardAddingFormValidator.disableButton();
-    cardAddingFormValidator.clearErrorsOnOpening();
+    cardAddingFormValidator.clearErrors();
 });
