@@ -13,10 +13,10 @@ export default class UserInfo {
         };
         return data;
     }
-    setUserInfo({ name, job, avatar, _id }) {
+    setUserInfo(name, job, avatar, _id) {
         this._name.textContent = name;
         this._job.textContent = job;
-        this._avatar = avatar;
+        this._avatar.style.backgroundImage = `url("${avatar}")`;
         this._id = _id;
     }
     changeAvatar(avatar) {

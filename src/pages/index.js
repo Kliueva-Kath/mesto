@@ -67,11 +67,9 @@ let userId;
 
 // правило, чтобы карточки не прогружались раньше получения данных о пользователе
 Promise.all([api.getUserInfo(), api.getCards()])
-    .then(([userInfo, cardData]) => {
-        userName.textContent = userInfo.name;
-        userJob.textContent = userInfo.about;
-        userId = userInfo._id;
-        userAvatar.style.backgroundImage = `url(${userInfo.avatar})`;
+    .then(([userData, cardData]) => {
+        const { name, about, avatar, _id } = userData;
+        userInfo.setUserInfo(name, about, avatar, _id);
         cardList.renderItems(cardData, userInfo._id);
     })
     .catch((err) => {
