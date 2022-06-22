@@ -26,6 +26,7 @@ export const popupEditOpenButton = document.querySelector(
 
 // данные для валидации форм
 export const config = {
+    formSelector: ".form",
     inputSelector: ".form__input",
     buttonSelector: ".form__save-button",
     inactiveButtonClass: "form__save-button_inactive",
