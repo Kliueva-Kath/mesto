@@ -16,8 +16,6 @@ import {
     popupAddCardOpenButton,
     popupEditOpenButton,
     config,
-    userName,
-    userJob,
     userAvatar,
 } from "../utils/constants.js";
 
@@ -51,24 +49,6 @@ const enableValidation = (config) => {
 };
 
 enableValidation(config);
-
-/* const profileEditFormValidator = new FormValidator(
-    config,
-    document.forms.profileEditForm
-);
-profileEditFormValidator.enableValidation();
-
-const cardAddingFormValidator = new FormValidator(
-    config,
-    document.forms.addCardForm
-);
-cardAddingFormValidator.enableValidation();
-
-const avatarChangeFormValidator = new FormValidator(
-    config,
-    document.forms.avatarChangeForm
-);
-avatarChangeFormValidator.enableValidation(); */
 
 // попап просмотра изображений
 const popupWithImage = new PopupWithImage(".popup_type_image");

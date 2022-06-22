@@ -11,11 +11,6 @@ export const popupChangeAvatarOpenButton = document.querySelector(
     ".profile__avatar-edit"
 );
 
-// форма добавления карточки
-export const cardAddingForm = document.forms.addCardForm;
-export const placeInput = cardAddingForm.elements.placeInput;
-export const urlInput = cardAddingForm.elements.urlInput;
-
 // кнопки открытия попапов с формами
 export const popupAddCardOpenButton = document.querySelector(
     ".profile__add-button"
@@ -35,6 +30,4 @@ export const config = {
 };
 
 // поля с данными пользователя
-export const userName = document.querySelector(".profile__name");
-export const userJob = document.querySelector(".profile__job");
 export const userAvatar = document.querySelector(".profile__avatar");
