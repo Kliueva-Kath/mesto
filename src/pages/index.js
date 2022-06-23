@@ -66,12 +66,7 @@ let userId;
 // правило, чтобы карточки не прогружались раньше получения данных о пользователе
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([userData, cardData]) => {
-        userInfo.setUserInfo(
-            userData.name,
-            userData.about,
-            userData.avatar,
-            userData._id
-        );
+        userInfo.setUserInfo(userData);
         userId = userData._id;
         cardList.renderItems(cardData, userData._id);
     })
@@ -169,7 +164,7 @@ const popupEdit = new PopupWithForm(".popup_type_edit", (formData) => {
     api
         .editUserInfo(formData["nameInput"], formData["jobInput"])
         .then((res) => {
-            userInfo.setUserInfo(res.name, res.about, res.avatar, res._id);
+            userInfo.setUserInfo(res);
             popupEdit.close();
         })
         .catch((err) => {
