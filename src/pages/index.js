@@ -72,7 +72,8 @@ Promise.all([api.getUserInfo(), api.getCards()])
             userData.avatar,
             userData._id
         );
-        cardList.renderItems(cardData, userInfo._id);
+        userId = userData._id;
+        cardList.renderItems(cardData, userData._id);
     })
     .catch((err) => {
         console.log(err);
