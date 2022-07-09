@@ -190,7 +190,6 @@ const popupChangeAvatar = new PopupWithForm(
             })
             .catch((err) => {
                 console.log(err);
-                console.log(formData["avatarInput"]);
             })
             .finally(() => {
                 popupChangeAvatar.renderLoading("Сохранить");
