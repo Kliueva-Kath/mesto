@@ -32,4 +32,4 @@
 
 1. [Научиться учиться](https://kliueva-kath.github.io/how-to-learn/)
 2. [Путешествия по России](https://kliueva-kath.github.io/russian-travel/)
-3. [Mesto на React]https://github.com/Kliueva-Kath/react-mesto-auth)
+3. [Mesto на React](https://github.com/Kliueva-Kath/react-mesto-auth)
